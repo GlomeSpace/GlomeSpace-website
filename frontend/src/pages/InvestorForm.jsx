@@ -291,6 +291,9 @@ const InvestorForm = () => {
           <p className="text-gray-500 text-sm">
             &copy; {new Date().getFullYear()} GlomeSpace, Inc and its affiliates
           </p>
+
+          <p>251 West 30th Street, New York, NY 10001, US</p>
+
         </div>
       </footer>
     </>

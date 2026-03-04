@@ -23,6 +23,7 @@ import {
   X,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import CalendlyWidget from "../components/CalendlyWidget";
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -443,6 +444,16 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Calendry */}
+
+      
+
+           <div className="w-full h-max ">
+          <CalendlyWidget />
+          </div>
+
+
+
       {/* Footer */}
       <footer className="bg-slate-100 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
@@ -455,6 +466,7 @@ const Home = () => {
           <p className="text-gray-500 text-sm">
             &copy; {new Date().getFullYear()} GlomeSpace, Inc and its affiliates
           </p>
+          <p>251 West 30th Street, New York, NY 10001, US</p>
         </div>
       </footer>
     </div>
