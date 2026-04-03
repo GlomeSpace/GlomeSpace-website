@@ -1,7 +1,5 @@
-
-import { useState } from "react";
-import { Spinner } from "@/components/ui/spinner";
-import { FaLinkedin } from "react-icons/fa6";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,24 +9,17 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 
-import {
-  Send,
-  Package,
-  Clock,
-  DollarSign,
-  Users,
-  CheckCircle,
-  Menu,
-  X,
-} from "lucide-react";
-import { Link } from "react-router-dom";
 import CalendlyWidget from "../components/CalendlyWidget";
+import Footer from "../components/Footer";
+import { ShipmentComponent } from "../components/ShipmentComponent";
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const GLOMESPACE_APP_URL = import.meta.env.VITE_GLOMESPACE_APP_URL;
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [messageTitle, setMessageTitle] = useState();
@@ -69,7 +60,7 @@ const Home = () => {
         const errorData = await response.json();
         throw new Error(
           errorData.message ||
-            `Server responded with status: ${response.status}`
+            `Server responded with status: ${response.status}`,
         );
       }
 
@@ -112,163 +103,79 @@ const Home = () => {
         </AlertDialogContent>
       </AlertDialog>
 
-      {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-md shadow-sm fixed w-full z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <a href="/">
-                <img src="/photos/glomespaceB.svg" width={200} />
-              </a>
-            </div>
-
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a
-                href="#features"
-                className="text-gray-700 hover:text-blue-900 transition"
-              >
-                Features
-              </a>
-              <a
-                href="#how-it-works"
-                className="text-gray-700 hover:text-blue-900 transition"
-              >
-                How It Works
-              </a>
-              <Link to="/become-an-investor" className="hover:underline">
-                Become an Angel Investor
-              </Link>
-
-              <a
-                href="#waitlist"
-                className="bg-blue-900 text-white px-6 py-2 rounded-full hover:bg-blue-800 transition"
-              >
-                Join Waitlist
-              </a>
-
-              <a target="_blank" href={"https://www.linkedin.com/company/glomespace/"}>
-                <FaLinkedin size={30} className="text-blue-900" />
-              </a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-blue-900"
-            >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t">
-            <div className="px-4 py-4 space-y-3">
-              <a
-                href="#features"
-                className="block text-gray-700 hover:text-blue-900"
-              >
-                Features
-              </a>
-              <a
-                href="#how-it-works"
-                className="block text-gray-700 hover:text-blue-900"
-              >
-                How It Works
-              </a>
-               <Link to="/become-an-investor" className="hover:underline">
-                Become an Angel Investor
-              </Link>
-              <a
-                href="#waitlist"
-                className="block bg-blue-900 text-white px-6 py-2 rounded-full text-center"
-              >
-                Join Waitlist
-              </a>
-            </div>
-          </div>
-        )}
-      </nav>
-
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="pt-20 bg-blue-100 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-900 mb-6 leading-tight">
-                Ship faster, smarter and cheaper
-              </h1>
-              <p className="text-lg sm:text-xl text-gray-700 mb-8 leading-relaxed">
-                Connect with verified travelers heading to your destination.
-                Reduce transit times and costs by up to 70% compared to
-                traditional logistics providers.
+          <div className="flex flex-col-reverse md:flex-row gap-2 items-center">
+            <div className="md:w-7/10  text-center lg:text-left">
+              <SlotMachine />
+
+              <p className=" mt-10 font-bold text-gray-900 md:text-[20px]">
+                Stop Losing customers due to Cart Abandonment at Checkout.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a
-                  href="#waitlist"
-                  className="bg-blue-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                >
-                  Get Early Access
-                </a>
-                <a
-                  href="#how-it-works"
-                  className="bg-white text-blue-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-slate-100 transition border-2 border-blue-900"
-                >
-                  Learn More
-                </a>
+              <p className="mt-10 ">
+                Connect with verified GlomeSpace travelers heading to locations
+                where your clients are. Get your products delivered faster and
+                more affordably than ever before.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-4">
+                <Button className="text-[13px] px-2  bg-blue-900">
+                  <a
+                    href={`${GLOMESPACE_APP_URL}/account`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Create a Shipment
+                  </a>
+                </Button>
               </div>
             </div>
 
-            <div className="relative">
-              <div className="bg-gradient-to-br from-blue-900 to-blue-700 rounded-3xl p-8 shadow-2xl transform hover:scale-105 transition duration-500">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="bg-white/20 p-3 rounded-full">
-                      <Send className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-white font-semibold">
-                        Package in Transit
-                      </p>
-                      <p className="text-blue-100 text-sm">
-                        Arrives in 2 hours and 27 minutes
-                      </p>
-                    </div>
-                  </div>
-                  <div className="h-2 bg-white/20 rounded-full overflow-hidden">
-                    <div className="h-full bg-white rounded-full w-3/4 animate-pulse"></div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                    <Clock className="w-8 h-8 text-white mx-auto mb-2" />
-                    <p className="text-white font-bold text-xl">70%</p>
-                    <p className="text-blue-100 text-xs">Faster</p>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                    <DollarSign className="w-8 h-8 text-white mx-auto mb-2" />
-                    <p className="text-white font-bold text-xl">50%</p>
-                    <p className="text-blue-100 text-xs">Cheaper</p>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                    <Users className="w-8 h-8 text-white mx-auto mb-2" />
-                    <p className="text-white font-bold text-xl">100%</p>
-                    <p className="text-blue-100 text-xs">Verified</p>
-                  </div>
-                </div>
+            <div className="relative flex flex-col items-center justify-center  md:gap-5 h-50 md:h-100 w-6/10">
+              <div className="absolute top-1 md:left-90 ">
+                <ShipmentComponent />
+              </div>
+              <div className="absolute w-60 mt-6 md:w-full">
+                <img src="/photos/Ecommerce_seller.png" className=" md:w-600" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/**
+       *  <div className=" flex w-full bg-red h-100 w-full h-80 overflow-hidden flex items-center justify-center rounded-xl">
+        <div className=" flex  justify-center items-center w-3/10">
+          <h className="font-fancyFont  font-bold text-[50px]">
+            Why GlomeSpace?
+          </h>
+        </div>
+        <div className="relative flex h-full  w-7/10 "></div>
+      </div>
+      *  <div className="w-full bg-blue-900 h-100">
+        <div className="flex items-center justify-center h-full w-8/10 mx-auto">
+          <div className="flex text-[40px] text-white">
+            <p>Are you struggling with cart abadonment at Checkout?</p>
+          </div>
+
+          <div className="flex flex-col">
+            <p className="text-white text-lg">
+              We're the Airbnb for Logistics. We connect e-commerce sellers and
+              individual shoppers with verified GlomeSpace travelers heading to
+              their locations, enabling faster and more affordable deliveries.
+            </p>
+
+            <p className="text-green-">
+              Install GlomeSpace natively in your Shopify store and get access
+              to a global network of travelers ready.
+            </p>
+          </div>
+        </div>
+      </div>
+      */}
+
+      {/* Features Section 
+
       <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-blue-900 mb-4">
@@ -328,6 +235,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      */}
 
       {/* How It Works */}
       <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -446,31 +354,57 @@ const Home = () => {
 
       {/* Calendry */}
 
-      
-
-           <div className="w-full h-max ">
-          <CalendlyWidget />
-          </div>
-
-
-
-      {/* Footer */}
-      <footer className="bg-slate-100 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center space-x-2">
-            <a href="/">
-              <img src="/photos/glomespaceB.svg" width={200} />
-            </a>
-          </div>
-          <p className="text-gray-600 mb-4">Ship faster, smarter and cheaper</p>
-          <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} GlomeSpace, Inc and its affiliates
-          </p>
-          <p>251 West 30th Street, New York, NY 10001, US</p>
-        </div>
-      </footer>
+      <div className="w-full h-max ">
+        <CalendlyWidget />
+      </div>
     </div>
   );
 };
 
 export default Home;
+
+const words = [
+  " Shopify ?",
+  " Amazon ?",
+  " eBay ?",
+  " Etsy ?",
+  " WooCommerce ?",
+  " BigCommerce ?",
+  " Magento ?",
+  " Wix ?",
+  "Squarespace ?",
+  "PrestaShop ?",
+];
+
+const SlotMachine = () => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="flex items-center gap-2 font-bold">
+      <h1 className="text-[20px]  md:text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-900 ">
+        Are you an e-commerce seller on{" "}
+        <span className="inline-flex h-max overflow-hidden px-2 rounded align-bottom ">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={words[index]}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="text-blue-900"
+            >
+              {words[index]}
+            </motion.div>
+          </AnimatePresence>
+        </span>
+      </h1>
+    </div>
+  );
+};

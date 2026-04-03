@@ -11,19 +11,13 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import {
-  Send,
-  Package,
-  Clock,
-  DollarSign,
-  Users,
-  CheckCircle,
-  Menu,
-  X,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { NewsletterForm } from "../components/NewsLetterForm";
+import Footer from "../components/Footer";
 
 const InvestorForm = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -106,45 +100,47 @@ const InvestorForm = () => {
         </AlertDialogContent>
       </AlertDialog>
 
-
       {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-md shadow-sm fixed w-full z-50">
+      <nav className="bg-slate-200 backdrop-blur-md shadow-sm fixed w-full z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
               <a href="/">
                 <img src="/photos/glomespaceB.svg" width={200} />
-             </a>
+              </a>
             </div>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
-              <a 
+              <a
                 href="/#features"
                 className="text-gray-700 hover:text-blue-900 transition"
               >
                 Features
-             </a>
-              <a 
+              </a>
+              <a
                 href="/#how-it-works"
                 className="text-gray-700 hover:text-blue-900 transition"
               >
                 How It Works
-             </a>
-               <Link to="/become-an-investor" className="hover:underline">
+              </a>
+              <Link to="/become-an-investor" className="hover:underline">
                 Become an Angel Investor
               </Link>
 
-              <a 
+              <a
                 href="/#waitlist"
                 className="bg-blue-900 text-white px-6 py-2 rounded-full hover:bg-blue-800 transition"
               >
                 Join Waitlist
-             </a>
+              </a>
 
-              <a target="_blank" href={"https://www.linkedin.com/company/glomespace/"}>
+              <a
+                target="_blank"
+                href={"https://www.linkedin.com/company/glomespace/"}
+              >
                 <FaLinkedin size={30} className="text-blue-900" />
-             </a>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -165,28 +161,28 @@ const InvestorForm = () => {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="px-4 py-4 space-y-3">
-              <a 
+              <a
                 href="/#features"
                 className="block text-gray-700 hover:text-blue-900"
               >
                 Features
-             </a>
-              <a 
+              </a>
+              <a
                 href="/#how-it-works"
                 className="block text-gray-700 hover:text-blue-900"
               >
                 How It Works
-             </a>
-               <Link to="/become-an-investor" className="hover:underline">
+              </a>
+              <Link to="/become-an-investor" className="hover:underline">
                 Become an Angel Investor
               </Link>
 
-              <a 
+              <a
                 href="/#waitlist"
                 className="block bg-blue-900 text-white px-6 py-2 rounded-full text-center"
               >
                 Join Waitlist
-             </a>
+              </a>
             </div>
           </div>
         )}
@@ -280,22 +276,7 @@ const InvestorForm = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-100 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center space-x-2">
-            <a href="/">
-              <img src="/photos/glomespaceB.svg" width={200} />
-           </a>
-          </div>
-          <p className="text-gray-600 mb-4">Ship faster, smarter and cheaper</p>
-          <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} GlomeSpace, Inc and its affiliates
-          </p>
-
-          <p>251 West 30th Street, New York, NY 10001, US</p>
-
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };
