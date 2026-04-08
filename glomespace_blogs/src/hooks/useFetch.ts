@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 // Define the shape of a standard Strapi response
 interface StrapiResponse<T> {
