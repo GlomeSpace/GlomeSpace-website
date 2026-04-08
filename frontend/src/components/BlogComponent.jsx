@@ -1,4 +1,4 @@
-import { useFetch } from "../../glomespace_blogs/src/hooks/useFetch";
+import { useFetch } from "../../../glomespace_blogs/src/hooks/useFetch";
 
 export const BlogComponent = () => {
   const STRAPI_API_URL = import.meta.env.VITE_STRAPI_API_URL;

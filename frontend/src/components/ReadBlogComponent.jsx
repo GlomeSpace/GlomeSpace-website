@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link, useParams } from "react-router-dom";
 import { NewsletterForm, ThinNewsletterForm } from "./NewsLetterForm";
-import { useFetch } from "../../glomespace_blogs/src/hooks/useFetch";
+import { useFetch } from "../../../glomespace_blogs/src/hooks/useFetch";
 import { UseDataFetcher } from "../hooks/UseDataFetcher";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";

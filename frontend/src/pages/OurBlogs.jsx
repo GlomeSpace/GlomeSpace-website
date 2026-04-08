@@ -60,14 +60,6 @@ export const BlogPosts = () => {
         <div className="flex flex-col gap-5 max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             <BlogComponent />
-            <BlogComponent />
-            <BlogComponent />
-            <BlogComponent />
-            <BlogComponent />
-            <BlogComponent />
-            <BlogComponent />
-            <BlogComponent />
-            <BlogComponent />
           </div>
         </div>
       </section>
