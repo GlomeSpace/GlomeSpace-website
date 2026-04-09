@@ -1,4 +1,5 @@
 import { Skeleton } from "@/components/ui/skeleton";
+import { useFetch } from "../hooks/useFetch";
 
 export const BlogComponent = ({ data }) => {
   return (
@@ -79,5 +80,34 @@ export const BlogComponentSkeleton = () => {
         <Skeleton className="w-7/10 h-3 bg-slate-200 bg-gray-200" />
       </Skeleton>
     </Skeleton>
+  );
+};
+
+export const BlogPostEmbeddable = () => {
+  const STRAPI_API_URL = import.meta.env.VITE_STRAPI_API_URL;
+  const { loading, error, data } = useFetch(
+    `${STRAPI_API_URL}/api/blogs?pagination[limit]=3&sort[0]=createdAt:desc`,
+  );
+  return (
+    <div className="flex flex-col h-140 px-10 w-full">
+      <div className="flex flex-col items-center justify-center h-2/10 ">
+        <h3 className="font-bold text-[20px]">Get insipired</h3>
+        <p className="text-gray-500 uppercase tracking-widest text-[12px] font-medium">
+          Explore strategies and stories from our global delivery network.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-8">
+        {loading ? (
+          <>
+            <BlogComponentSkeleton />
+            <BlogComponentSkeleton />
+            <BlogComponentSkeleton />
+          </>
+        ) : (
+          <BlogComponent data={data} />
+        )}
+      </div>
+    </div>
   );
 };

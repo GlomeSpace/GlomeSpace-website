@@ -9,18 +9,43 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import {
+  Send,
+  Package,
+  Clock,
+  DollarSign,
+  Users,
+  CheckCircle,
+  Menu,
+  X,
+} from "lucide-react";
+import {
+  MdOutlineEco,
+  MdOutlineSavings,
+  MdOutlineSecurity,
+  MdOutlineSpeed,
+} from "react-icons/md";
+
 import { Button } from "@/components/ui/button";
 
 import CalendlyWidget from "../components/CalendlyWidget";
 import Footer from "../components/Footer";
 import { ShipmentComponent } from "../components/ShipmentComponent";
 import { CirclePlus } from "lucide-react";
+import {
+  BlogComponent,
+  BlogComponentSkeleton,
+  BlogPostEmbeddable,
+} from "../components/BlogComponent";
+
+import { TrustpilotReviewCard } from "../components/TrustpilotReviewCard";
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const GLOMESPACE_APP_URL = import.meta.env.VITE_GLOMESPACE_APP_URL;
+
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [messageTitle, setMessageTitle] = useState();
@@ -75,6 +100,45 @@ const Home = () => {
       question: "How do I choose the right traveler?",
       answer:
         "You can view a traveler’s profile, which includes their verification status, past delivery history, and reviews from other shipment owners. Choose the one that best fits your timeline and budget.",
+    },
+  ];
+
+  const features = [
+    {
+      id: 1,
+      icon: Clock,
+      title: "Lightning Fast",
+      desc: "Reduce delivery times by up to 70% with direct traveler connections",
+    },
+    {
+      id: 2,
+      icon: DollarSign,
+      title: "Cost Effective",
+      desc: "Save up to 50% on shipping costs compared to traditional carriers",
+    },
+    {
+      id: 3,
+      icon: Users,
+      title: "Verified Travelers",
+      desc: "All travelers are thoroughly verified for safety and reliability",
+    },
+    {
+      id: 4,
+      icon: Package,
+      title: "Real-Time Tracking",
+      desc: "Track your shipment every step of the way with live updates",
+    },
+    {
+      id: 5,
+      icon: CheckCircle,
+      title: "Secure Delivery",
+      desc: "Insurance coverage and secure handoff protocols for peace of mind",
+    },
+    {
+      id: 5,
+      icon: Send,
+      title: "Global Network",
+      desc: "Connect with travelers heading to destinations worldwide",
     },
   ];
 
@@ -221,69 +285,6 @@ const Home = () => {
       </div>
       */}
 
-      {/* Features Section 
-
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-blue-900 mb-4">
-            Why Choose GlomeSpace?
-          </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Revolutionary logistics that connects you with travelers going your
-            way
-          </p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Clock,
-                title: "Lightning Fast",
-                desc: "Reduce delivery times by up to 70% with direct traveler connections",
-              },
-              {
-                icon: DollarSign,
-                title: "Cost Effective",
-                desc: "Save up to 50% on shipping costs compared to traditional carriers",
-              },
-              {
-                icon: Users,
-                title: "Verified Travelers",
-                desc: "All travelers are thoroughly verified for safety and reliability",
-              },
-              {
-                icon: Package,
-                title: "Real-Time Tracking",
-                desc: "Track your shipment every step of the way with live updates",
-              },
-              {
-                icon: CheckCircle,
-                title: "Secure Delivery",
-                desc: "Insurance coverage and secure handoff protocols for peace of mind",
-              },
-              {
-                icon: Send,
-                title: "Global Network",
-                desc: "Connect with travelers heading to destinations worldwide",
-              },
-            ].map((feature, idx) => (
-              <div
-                key={idx}
-                className="bg-slate-100 rounded-2xl p-6 hover:shadow-xl transition transform hover:-translate-y-2 duration-300"
-              >
-                <div className="bg-blue-900 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                  <feature.icon className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-blue-900 mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      */}
-
       {/* How It Works */}
       <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -326,8 +327,83 @@ const Home = () => {
         </div>
       </section>
 
-      <div>
-        <h1 className="text-blue-900 font-bold text-center mt-20">
+      <div className="flex flex-col gap-2 w-full md:h-200 px-5 md:px-30">
+        <div className="flex flex-col md:flex-row gap-2  md:h-1/2">
+          <div className="flex flex-col p-5 md:p-10 justify-center  bg-slate-200 text-black w-full md:w-4/10 rounded-md ">
+            <div>
+              <MdOutlineSpeed size={45} className="" />
+              <h2 className="font-primaryFont text-left font-bold text-[30px] md:text-[40px]">
+                Unmatched Velocity
+              </h2>
+            </div>
+
+            <p className="text-[17px] md:text-[15px]">
+              Traditional logistics relies on warehouses and hub-and-spoke
+              sorting that adds days to your timeline. GlomeSpace leverages the
+              'Next-Flight' advantage. By connecting you with travelers already
+              moving toward your destination, we enable international deliveries
+              in hours, not weeks—turning global shipping into a local-speed
+              experience.
+            </p>
+          </div>
+          <div className="flex flex-col p-10 justify-center  bg-slate-200 text-black w-full md:w-6/10 rounded-md ">
+            <div className="mb-2 md:mb-0">
+              <MdOutlineSavings size={45} className="text-" />
+              <h2 className="font-primaryFont text-left font-bold text-[30px] md:text-[40px]">
+                Zero Infrastructure Costs
+              </h2>
+            </div>
+
+            <p className="text-[17px] md:text-[15px]">
+              We’ve eliminated the overhead of massive fleets and expensive fuel
+              surcharges. By utilizing existing, unused luggage capacity,
+              GlomeSpace reduces shipping costs by up to 50%. We pass those
+              savings directly to you, making premium international shipping
+              accessible to small businesses and individuals alike.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col  md:flex-row h-1/2 gap-2">
+          <div className="flex flex-col p-10 justify-center  bg-slate-200 text-black w-full md:w-6/10 rounded-md ">
+            <div className="mb-2 md:mb-0">
+              <MdOutlineEco size={45} className="text-" />
+              <h2 className="font-primaryFont text-left font-bold text-[30px] md:text-[40px]">
+                Eco-Friendly Logistics
+              </h2>
+            </div>
+
+            <p className="text-[17px] md:text-[15px]">
+              The greenest delivery is the one already happening. GlomeSpace is
+              built on the principles of the circular economy, utilizing the
+              carbon footprint of journeys that are already in motion. We move
+              more goods with fewer vehicles, significantly reducing the
+              environmental impact per package compared to traditional freight.
+            </p>
+          </div>
+
+          <div className="flex flex-col p-10 justify-center  bg-blue-900 text-white w-full md:w-4/10 rounded-md ">
+            <div className="mb-2 md:mb-0">
+              <MdOutlineSecurity size={45} className="text-white" />
+              <h2 className="font-primaryFont text-left font-bold text-[30px] md:text-[40px]">
+                Security
+              </h2>
+            </div>
+
+            <p className="text-[17px] md:text-[15px]">
+              Beyond mandatory ID verification, GlomeSpace utilizes advanced
+              fraud mitigation and a secure escrow protocol to protect both
+              shipment owners and travelers. We’ve redesigned logistics to be
+              decentralized, but we’ve kept security centralized at the heart of
+              everything we do—ensuring your items and your earnings are always
+              in safe hands.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Frequently Asked Questions Section */}
+      <div className="">
+        <h1 className="text-blue-900 font-bold text-center px-2 md:px-0 mt-20">
           Frequently Asked Questions (FAQs) by Shipment Owners
         </h1>
         <div className="flex flex-col md:flex-row max-w-7xl mx-auto mt-10 px-4 sm:px-6 lg:px-8">
@@ -367,84 +443,10 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Waitlist Section */}
-      <section
-        id="waitlist"
-        className="py-80 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-900 to-slate-100"
-      >
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Join the Revolution
-          </h2>
-          <p className="text-blue-100 text-lg mb-12">
-            Be among the first to experience the future of logistics. Sign up
-            for early access today.
-          </p>
+      {/* Blogs Section */}
+      <BlogPostEmbeddable />
 
-          <form
-            onSubmit={(e) => postFormData(e)}
-            className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl"
-          >
-            <div className="mb-6">
-              <input
-                type="email"
-                name="email"
-                value={email}
-                required
-                className="w-full px-6 py-4 rounded-full border-2 border-slate-100 focus:border-blue-900 focus:outline-none text-lg"
-                placeholder="yourname@gmail.com"
-                onChange={(e) => handleOnChange(e)}
-              />
-            </div>
-
-            <div className="mb-6 flex items-center justify-center space-x-3">
-              <input
-                type="checkbox"
-                id="newsletter"
-                name="newsletter"
-                checked={newsletter}
-                className="scale-140"
-                onChange={handleOnChange}
-              />
-
-              <label
-                htmlFor="newsletter"
-                className="text-gray-700 cursor-pointer"
-              >
-                Sign up for our newsletter
-              </label>
-            </div>
-
-            {isLoading ? (
-              <button
-                disabled
-                size="sm"
-                className="flex justify-center gap-2 w-full bg-blue-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-900 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              >
-                Processing
-                <Spinner className="size-6 text-white" />
-              </button>
-            ) : (
-              <button
-                type="submit"
-                className="w-full bg-blue-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              >
-                Join the Waitlist
-              </button>
-            )}
-
-            <p className="text-gray-500 text-sm mt-4">
-              No spam, ever. Unsubscribe at any time.
-            </p>
-          </form>
-        </div>
-      </section>
-
-      {/* Calendry */}
-
-      <div className="w-full h-max ">
-        <CalendlyWidget />
-      </div>
+      <TrustpilotReviewCard />
     </div>
   );
 };

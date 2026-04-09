@@ -6,6 +6,7 @@ import { UseDataFetcher } from "../hooks/UseDataFetcher";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
+import { TrustpilotReviewCard } from "./TrustpilotReviewCard";
 
 export const ReadBlogComponent = () => {
   const STRAPI_API_URL = import.meta.env.VITE_STRAPI_API_URL;
@@ -115,6 +116,7 @@ export const ReadBlogComponent = () => {
           <NewsletterForm />
         </div>
       </section>
+      <TrustpilotReviewCard />
     </div>
   );
 };

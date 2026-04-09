@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { CirclePlus, PhoneCall } from "lucide-react";
 import { MdEmail } from "react-icons/md";
 import { FaAddressBook, FaAddressCard } from "react-icons/fa6";
+import { BlogPostEmbeddable } from "../components/BlogComponent";
+import { TrustpilotReviewCard } from "../components/TrustpilotReviewCard";
 
 export const AboutUs = () => {
   const GLOMESPACE_APP_URL = import.meta.env.VITE_GLOMESPACE_APP_URL;
@@ -161,7 +163,11 @@ export const AboutUs = () => {
         </div>
       </div>
 
-      <div className="flex flex-col mx-auto items-center justify-center gap-2 w-max h-100">
+      <BlogPostEmbeddable />
+
+      <TrustpilotReviewCard />
+
+      <div className="flex flex-col  items-center justify-center gap-2 w-full h-max">
         <h1 className="text-blue-900 font-bold">Contact Us</h1>
 
         <div className="flex flex-col md:flex-row   text-[14px] text-gray-600 gap-4 items-start justify-start">
