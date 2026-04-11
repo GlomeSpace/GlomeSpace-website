@@ -6,7 +6,10 @@ export const BlogComponent = ({ data }) => {
     <>
       {data?.data
         ? data.data.map((blog) => (
-            <div key={blog.id} className="bg-white rounded-lg shadow-md p-1">
+            <div
+              key={blog.id}
+              className="bg-white rounded-lg shadow-md p-1 h-100"
+            >
               {/* If you don't have an imageUrl in the object yet, use a placeholder or check your CMS fields */}
               <img
                 src={blog.thumbnail.url || "/photos/glomespace_thumnbail.png"}
@@ -35,7 +38,10 @@ export const BlogComponent = ({ data }) => {
             </div>
           ))
         : data?.map((blog) => (
-            <div key={blog.id} className="bg-white rounded-lg shadow-md p-1">
+            <div
+              key={blog.id}
+              className="bg-white rounded-lg shadow-md p-1 h-100"
+            >
               {/* If you don't have an imageUrl in the object yet, use a placeholder or check your CMS fields */}
               <img
                 src={blog.thumbnail.url || "/photos/glomespace_thumnbail.png"}
@@ -90,10 +96,10 @@ export const BlogPostEmbeddable = () => {
   );
 
   return (
-    <div className="flex flex-col h-140 px-3 md:px-10 w-full">
+    <div className="flex flex-col h-max md:h-140 px-3 md:px-10 w-full">
       <div className="flex flex-col items-center justify-center h-2/10 ">
         <h3 className="font-bold text-[20px]">Get insipired</h3>
-        <p className="text-gray-500 uppercase tracking-widest text-[12px] font-medium">
+        <p className="text-gray-500 uppercase tracking-widest text-[12px] font-medium mb-5 md:mb-0">
           Explore strategies and stories from our global delivery network.
         </p>
       </div>
@@ -106,7 +112,9 @@ export const BlogPostEmbeddable = () => {
             <BlogComponentSkeleton />
           </>
         ) : (
-          <BlogComponent data={data} />
+          <>
+            <BlogComponent data={data} />
+          </>
         )}
       </div>
     </div>

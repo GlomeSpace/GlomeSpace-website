@@ -12,7 +12,7 @@
   "pluginOptions": {},
   "attributes": {
     "Title": {
-      "type": "string"
+      "type": "text"
     },
     "thumbnail": {
       "type": "media",
@@ -28,13 +28,17 @@
       "type": "date"
     },
     "description": {
-      "type": "string"
+      "type": "text"
     },
     "content": {
       "type": "blocks"
     },
     "author": {
       "type": "string"
+    },
+    "table": {
+      "type": "customField",
+      "customField": "plugin::table-field.table"
     }
   }
 }

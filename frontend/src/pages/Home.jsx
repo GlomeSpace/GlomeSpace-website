@@ -444,6 +444,7 @@ const Home = () => {
       </div>
 
       {/* Blogs Section */}
+      
       <BlogPostEmbeddable />
 
       <TrustpilotReviewCard />
