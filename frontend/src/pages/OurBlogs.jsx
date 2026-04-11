@@ -16,7 +16,9 @@ export const BlogPosts = () => {
   const GLOMESPACE_APP_URL = import.meta.env.VITE_GLOMESPACE_APP_URL;
   const STRAPI_API_URL = import.meta.env.VITE_STRAPI_API_URL;
 
-  const { loading, error, data } = useFetch(`${STRAPI_API_URL}/api/blogs`);
+  const { loading, error, data } = useFetch(
+    `${STRAPI_API_URL}/api/blogs?populate=*`,
+  );
 
   return (
     <div className="min-h-screen font-headerFont bg-gradient-to-br from-slate-100 via-blue-50 to-slate-100">

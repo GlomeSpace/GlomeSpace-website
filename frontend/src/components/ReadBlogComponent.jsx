@@ -7,6 +7,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
 import { TrustpilotReviewCard } from "./TrustpilotReviewCard";
+import { Link2 } from "lucide-react";
 
 export const ReadBlogComponent = () => {
   const STRAPI_API_URL = import.meta.env.VITE_STRAPI_API_URL;
@@ -80,6 +81,11 @@ export const ReadBlogComponent = () => {
                   className="text-blue-900 hover:underline"
                 >
                   <FaLinkedin size={25} />
+                </a>
+
+                <a >
+                  
+                  <Link2 />
                 </a>
 
                 {/* Add more social platforms as needed */}

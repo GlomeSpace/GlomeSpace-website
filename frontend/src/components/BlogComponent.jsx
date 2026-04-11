@@ -9,7 +9,7 @@ export const BlogComponent = ({ data }) => {
             <div key={blog.id} className="bg-white rounded-lg shadow-md p-1">
               {/* If you don't have an imageUrl in the object yet, use a placeholder or check your CMS fields */}
               <img
-                src={blog.thumbnail || "/photos/glomespace_thumnbail.png"}
+                src={blog.thumbnail.url || "/photos/glomespace_thumnbail.png"}
                 alt={blog.Title}
                 className="w-full h-48 object-cover rounded-md"
               />
@@ -38,7 +38,7 @@ export const BlogComponent = ({ data }) => {
             <div key={blog.id} className="bg-white rounded-lg shadow-md p-1">
               {/* If you don't have an imageUrl in the object yet, use a placeholder or check your CMS fields */}
               <img
-                src={blog.thumbnail || "/photos/glomespace_thumnbail.png"}
+                src={blog.thumbnail.url || "/photos/glomespace_thumnbail.png"}
                 alt={blog.Title}
                 className="w-full h-48 object-cover rounded-md"
               />
@@ -86,8 +86,9 @@ export const BlogComponentSkeleton = () => {
 export const BlogPostEmbeddable = () => {
   const STRAPI_API_URL = import.meta.env.VITE_STRAPI_API_URL;
   const { loading, error, data } = useFetch(
-    `${STRAPI_API_URL}/api/blogs?pagination[limit]=3&sort[0]=createdAt:desc`,
+    `${STRAPI_API_URL}/api/blogs?populate=*&pagination[limit]=3&sort[0]=createdAt:desc`,
   );
+
   return (
     <div className="flex flex-col h-140 px-3 md:px-10 w-full">
       <div className="flex flex-col items-center justify-center h-2/10 ">
