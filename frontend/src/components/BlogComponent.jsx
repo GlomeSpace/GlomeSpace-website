@@ -12,7 +12,7 @@ export const BlogComponent = ({ data }) => {
             >
               {/* If you don't have an imageUrl in the object yet, use a placeholder or check your CMS fields */}
               <img
-                src={blog.thumbnail || "/photos/glomespace_thumnbail.png"}
+                src={blog.thumbnail.url || "/photos/glomespace_thumnbail.png"}
                 alt={blog.Title}
                 className="w-full h-48 object-cover rounded-md"
               />
