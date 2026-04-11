@@ -23,7 +23,7 @@ export const BlogComponent = ({ data }) => {
                   {blog.Title}
                 </h3>
 
-                <p className="text-gray-600 mb-4 text-[13px]">
+                <p className="line-clamp text-gray-600 mb-4 text-[13px]">
                   {blog.description}
                 </p>
 

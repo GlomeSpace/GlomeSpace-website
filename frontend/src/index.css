@@ -33,6 +33,13 @@
     transform: none !important;
 }
 
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Change this to the number of lines you want to show */
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
