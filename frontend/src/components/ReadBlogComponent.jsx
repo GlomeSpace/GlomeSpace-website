@@ -14,7 +14,9 @@ export const ReadBlogComponent = () => {
   const { documentId } = useParams();
   const { formatTimestamp } = UseDataFetcher();
 
-  const { loading, error, data } = useFetch(`${STRAPI_API_URL}/api/blogs`);
+  const { loading, error, data } = useFetch(
+    `${STRAPI_API_URL}/api/blogs?populate=*`,
+  );
 
   // 1. Check loading state FIRST
   if (loading) return <div className="pt-20 text-center">Loading blog...</div>;
