@@ -8,11 +8,11 @@ export const BlogComponent = ({ data }) => {
         ? data.data.map((blog) => (
             <div
               key={blog.id}
-              className="bg-white rounded-lg shadow-md p-1 h-100"
+              className="bg-white rounded-lg shadow-md p-1 h-max"
             >
               {/* If you don't have an imageUrl in the object yet, use a placeholder or check your CMS fields */}
               <img
-                src={blog.thumbnail.url || "/photos/glomespace_thumnbail.png"}
+                src={blog.thumbnail || "/photos/glomespace_thumnbail.png"}
                 alt={blog.Title}
                 className="w-full h-48 object-cover rounded-md"
               />
