@@ -83,8 +83,7 @@ export const ReadBlogComponent = () => {
                   <FaLinkedin size={25} />
                 </a>
 
-                <a >
-                  
+                <a>
                   <Link2 />
                 </a>
 
@@ -95,7 +94,7 @@ export const ReadBlogComponent = () => {
             <div className="relative flex flex-col items-center justify-center gap-5 h-80 md:h-100 w-full md:w-6/10">
               <div className="w-full md:h-9/10  absolute md:top-5 md:left-10 ">
                 <img
-                  src={blog.thumbnail || "/photos/glomespace_thumnbail.png"}
+                  src={blog.thumbnail.url || "/photos/glomespace_thumnbail.png"}
                   alt={blog.Title}
                   className="w-full h-full object-cover rounded-md md:mb-4"
                 />
