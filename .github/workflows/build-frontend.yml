@@ -1,0 +1,33 @@
+name: Glomespace-Website-frontend
+
+on:
+  pull_request:
+    branches: [ "develop" ]
+  push:
+    branches: [ "develop", "master" ]
+
+jobs:
+  build-and-check-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22.16.0'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install Dependencies
+        run: |
+          cd frontend
+          npm install
+          npm run format
+
+      - name: Build the Frontend
+        run: |
+          cd frontend
+          npm run build
