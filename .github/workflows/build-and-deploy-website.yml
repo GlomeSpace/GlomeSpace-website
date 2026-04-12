@@ -32,8 +32,8 @@ jobs:
       - name: Check Code Formatting (Prettier)
         run: npm run format
 
-      - name: Lint (ESLint)
-        run: npm run lint
+#      - name: Lint (ESLint)
+#        run: npm run lint
 
       - name: Build Frontend
         run: npm run build

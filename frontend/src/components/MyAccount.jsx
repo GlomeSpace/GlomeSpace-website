@@ -32,7 +32,7 @@ import { FaPlaneArrival } from "react-icons/fa6";
 import { FaCartFlatbedSuitcase } from "react-icons/fa6";
 import { RiAccountPinCircleLine } from "react-icons/ri";
 import { Button } from "../components/ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 //import { LoginDialog } from "../pages/RegisterUser";
 //import { UseDataFetcher } from "../hooks/UseDataFetcher";
 
@@ -49,7 +49,7 @@ export const MyAccountDialog = () => {
   const userInformation = {};
   const [isSigningOut, setIsSigningOut] = useState(false);
   const onLogoutClick = async () => {
-    await handleUserLogout();
+    // await handleUserLogout();
     // After the fetcher finishes clearing the backend/storage,
     // we manually clear this component's state to trigger the UI swap.
     setAccessToken(null);
