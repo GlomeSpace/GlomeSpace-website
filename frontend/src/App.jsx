@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import InvestorForm from "./pages/InvestorForm";
 import { Routes, Route } from "react-router";

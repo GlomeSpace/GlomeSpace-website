@@ -1,7 +1,6 @@
 import React from "react";
 import { Star, ExternalLink } from "lucide-react";
 
-
 export const TrustpilotReviewCard = () => {
   // Replace this with your actual Trustpilot profile link
   const TRUSTPILOT_LINK = "https://www.trustpilot.com/review/glomespace.com";
