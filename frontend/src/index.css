@@ -2,8 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Macondo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -29,14 +29,14 @@
 
 /* Sometimes they use a wrapper div with a high z-index */
 #kit-form-container > div {
-    position: relative !important;
-    transform: none !important;
+  position: relative !important;
+  transform: none !important;
 }
 
 .line-clamp {
   display: -webkit-box;
   -webkit-line-clamp: 5; /* Change this to the number of lines you want to show */
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 

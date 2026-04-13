@@ -1,33 +1,149 @@
-name: Glomespace-Website-frontend
+name: GlomeSpace-Website-CI
 
 on:
   pull_request:
-    branches: [ "develop" ]
+    branches: ["develop", "master"]
   push:
-    branches: [ "develop", "master" ]
+    branches: ["develop"]
 
 jobs:
-  build-and-check-frontend:
+
+  # JOB 1 — Frontend: lint, format, build
+  frontend-ci:
+    name: "Frontend — Quality & Build"
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: frontend
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '22.16.0'
-          cache: 'npm'
+          node-version: "20.x"
+          cache: "npm"
           cache-dependency-path: frontend/package-lock.json
 
       - name: Install Dependencies
-        run: |
-          cd frontend
-          npm install
-          npm run format
+        run: npm ci
 
-      - name: Build the Frontend
+      - name: Check Code Formatting (Prettier)
+        run: npm run format
+
+#      - name: Lint (ESLint)
+#        run: npm run lint
+
+      - name: Build Frontend
+        run: npm run build
+
+      - name: Docker Build Check
+        uses: docker/build-push-action@v6
+        with:
+          context: ./frontend
+          file: ./frontend/Dockerfile
+          push: false
+          platforms: linux/amd64
+          tags: glomespace-frontend:ci-check
+
+  # JOB 2 — Backend (Strapi): lint, build, Docker image check
+  backend-ci:
+    name: "Backend (Strapi) — Quality & Build"
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: glomespace_blogs
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "npm"
+          cache-dependency-path: glomespace_blogs/package-lock.json
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Strapi Admin Panel
+        run: npm run build
+        env:
+          NODE_ENV: production
+          APP_KEYS: "ci-key-1,ci-key-2,ci-key-3,ci-key-4"
+          API_TOKEN_SALT: "ci-api-token-salt"
+          ADMIN_JWT_SECRET: "ci-admin-jwt-secret"
+          TRANSFER_TOKEN_SALT: "ci-transfer-token-salt"
+          ENCRYPTION_KEY: "ci-encryption-key"
+          JWT_SECRET: "ci-jwt-secret"
+
+      - name: Docker Build Check (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: ./glomespace_blogs
+          file: ./glomespace_blogs/Dockerfile
+          push: false
+          platforms: linux/amd64
+          tags: glomespace-backend:ci-check
+
+  # JOB 3 — Docker Compose validation Ensures the full multiservice config is coherent
+
+  compose-validation:
+    name: "Docker Compose — Multi-Service Validation"
+    runs-on: ubuntu-latest
+    # Only run this after both service jobs pass
+    needs: [frontend-ci, backend-ci]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Validate docker-compose.yml syntax
+        run: docker compose config
+
+      - name: Build All Services (no push)
+        run: docker compose build
+        env:
+            # Dummy env vars so compose doesn't complain about missing variables
+            DOCKERHUB_USERNAME: dummy-value
+            DATABASE_NAME: ci_db
+            DATABASE_USERNAME: ci_user
+            DATABASE_PASSWORD: ci_password
+            DATABASE_CLIENT: postgres
+            DATABASE_PORT: 5432
+            DATABASE_SSL: "false"
+            APP_KEYS: "ci-key-1,ci-key-2,ci-key-3,ci-key-4"
+            API_TOKEN_SALT: ci-api-token-salt
+            ADMIN_JWT_SECRET: ci-admin-jwt-secret
+            TRANSFER_TOKEN_SALT: ci-transfer-token-salt
+            ENCRYPTION_KEY: ci-encryption-key
+            JWT_SECRET: ci-jwt-secret
+
+  # JOB 4 — CI Summary (always runs, gives a clear pass/fail)
+
+  ci-summary:
+    name: "CI — All Checks Passed"
+    runs-on: ubuntu-latest
+    needs: [frontend-ci, backend-ci, compose-validation]
+    # Runs even if previous jobs failed, so we always get a summary
+    if: always()
+
+    steps:
+      - name: Evaluate CI Result
         run: |
-          cd frontend
-          npm run build
+          if [[ "${{ needs.frontend-ci.result }}" != "success" || \
+                "${{ needs.backend-ci.result }}" != "success" || \
+                "${{ needs.compose-validation.result }}" != "success" ]]; then
+            echo "❌ CI failed — one or more jobs did not pass."
+            echo "   frontend-ci:        ${{ needs.frontend-ci.result }}"
+            echo "   backend-ci:         ${{ needs.backend-ci.result }}"
+            echo "   compose-validation: ${{ needs.compose-validation.result }}"
+            exit 1
+          fi
+          echo "✅ All CI checks passed — safe to merge to master."

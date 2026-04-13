@@ -49,6 +49,7 @@ const Home = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [messageTitle, setMessageTitle] = useState();
+
   const [finalMessage, setFinalMessage] = useState();
   const INITIAL_STATE = {
     username: "",
@@ -444,7 +445,7 @@ const Home = () => {
       </div>
 
       {/* Blogs Section */}
-      
+
       <BlogPostEmbeddable />
 
       <TrustpilotReviewCard />
