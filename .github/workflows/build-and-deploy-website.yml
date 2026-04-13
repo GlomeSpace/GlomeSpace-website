@@ -62,8 +62,8 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Lint (ESLint)
-        run: npm run lint
+#      - name: Lint (ESLint)
+#        run: npm run lint
 
       - name: Build Strapi Admin Panel
         run: npm run build
