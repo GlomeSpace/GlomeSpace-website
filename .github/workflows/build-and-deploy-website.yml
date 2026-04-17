@@ -150,11 +150,11 @@ jobs:
               -u "${{ secrets.DOCKERHUB_USERNAME }}" \
               --password-stdin
 
-            echo "📦 Pulling latest images..."
-            docker compose pull
+            echo "📦 Pulling latest backend image..."
+            docker compose pull backend
 
-            echo "🚀 Restarting services with new images..."
-            docker compose up -d --remove-orphans
+            echo "🚀 Restarting backend service..."
+            docker compose up -d --remove-orphans backend
 
             echo "🔓 Logging out of Docker Hub..."
             docker logout
@@ -163,8 +163,7 @@ jobs:
             docker image prune -f
 
             echo "✅ Deployment complete."
-            docker compose ps                  # Print running services as confirmation
-
+            docker compose ps
 
   # JOB 5 — CD Summary (always runs, clear pass/fail)
   cd-summary:
