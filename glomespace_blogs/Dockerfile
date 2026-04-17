@@ -14,17 +14,18 @@ RUN npm run build
 # Stage 2 — Production
 FROM node:20-alpine AS production
 
-RUN apk add --no-cache libpng        # only the runtime lib, not the dev tools
+RUN apk add --no-cache libpng
 
 WORKDIR /opt/app
 
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev                # no devDependencies
+RUN npm ci --omit=dev
 
-COPY --from=builder /opt/app/dist ./dist
+COPY --from=builder /opt/app/build ./build
 COPY --from=builder /opt/app/public ./public
 COPY --from=builder /opt/app/config ./config
 COPY --from=builder /opt/app/database ./database
+COPY --from=builder /opt/app/src ./src
 
 EXPOSE 1337
 
