@@ -20,9 +20,6 @@ services:
 
   backend:
     image: ${DOCKERHUB_USERNAME}/glomespace-website:backend-latest
-    build:
-      context: ./glomespace_blogs
-      dockerfile: Dockerfile
     restart: unless-stopped
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
@@ -50,9 +47,6 @@ services:
 
   frontend:
     image: ${DOCKERHUB_USERNAME}/glomespace-website:frontend-latest
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
     restart: unless-stopped
     ports:
       - "80:80"
