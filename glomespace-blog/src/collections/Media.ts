@@ -37,20 +37,20 @@ export const Media: CollectionConfig = {
       {
         name: 'hero',
         width: 1200,
-        height: 630, // standard OG image size — great for SEO
+        height: 630,
         position: 'centre',
       },
     ],
     adminThumbnail: 'thumbnail',
     formatOptions: {
-      format: 'webp', // ✅ auto-converts uploads to webp for performance
+      format: 'webp',
     },
   },
   fields: [
     {
       name: 'alt',
       type: 'text',
-      required: true, // ✅ good for accessibility and SEO
+      required: true,
     },
     {
       name: 'caption',
