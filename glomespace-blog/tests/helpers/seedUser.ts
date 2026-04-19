@@ -25,7 +25,15 @@ export async function seedTestUser(): Promise<void> {
   // Create fresh test user
   await payload.create({
     collection: 'users',
-    data: testUser,
+    overrideAccess: true,
+    data: {
+    email: testUser.email,
+    password: testUser.password,
+    firstName: 'Test',       // ✅ add required fields
+    lastName: 'User',
+    username: 'testuser',
+    role: 'reader',
+  },
   })
 }
 
