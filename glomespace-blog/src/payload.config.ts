@@ -40,7 +40,7 @@ export default buildConfig({
         media: true, 
       },
       token: process.env.BLOB_READ_WRITE_TOKEN_READ_WRITE_TOKEN,
-      clientUploads: false, 
+      clientUploads: true, 
     }),
   ],
 })
