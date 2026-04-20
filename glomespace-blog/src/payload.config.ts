@@ -10,8 +10,11 @@ import { Media } from './collections/Media'
 import { BlogPost } from './collections/BlogPost'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || []
+
 
 export default buildConfig({
   admin: {
@@ -43,4 +46,6 @@ export default buildConfig({
       clientUploads: true, 
     }),
   ],
+  cors: allowedOrigins,
+  csrf: allowedOrigins,
 })

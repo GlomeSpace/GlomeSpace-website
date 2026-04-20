@@ -90,9 +90,9 @@ export const BlogComponentSkeleton = () => {
 };
 
 export const BlogPostEmbeddable = () => {
-  const STRAPI_API_URL = import.meta.env.VITE_STRAPI_API_URL;
+  const PAYLOAD_API_URL = import.meta.env.VITE_PAYLOAD_API_URL;
   const { loading, data } = useFetch(
-    `${STRAPI_API_URL}/api/blogs?populate=*&pagination[limit]=3&sort[0]=createdAt:desc`,
+    `${PAYLOAD_API_URL}/api/blogs?populate=*&pagination[limit]=3&sort[0]=createdAt:desc`,
   );
 
   return (

@@ -14,10 +14,10 @@ import { useFetch } from "../hooks/useFetch";
 
 export const BlogPosts = () => {
   const GLOMESPACE_APP_URL = import.meta.env.VITE_GLOMESPACE_APP_URL;
-  const STRAPI_API_URL = import.meta.env.VITE_STRAPI_API_URL;
+  const PAYLOAD_API_URL = import.meta.env.VITE_PAYLOAD_API_URL;
 
   const { loading, error, data } = useFetch(
-    `${STRAPI_API_URL}/api/blogs?populate=*`,
+    `${PAYLOAD_API_URL}/api/blogs?populate=*`,
   );
 
   return (
