@@ -11,7 +11,7 @@ export const BlogComponent = ({ data }) => {
           <img
             src={
               blog.thumbnail?.sizes?.card?.url
-                ? `${PAYLOAD_API_URL}${blog.thumbnail.sizes.card.url}`
+                ? `${blog.thumbnail.sizes.card.url}`
                 : "/photos/glomespace_thumbnail.png"
             }
             alt={blog.title}
