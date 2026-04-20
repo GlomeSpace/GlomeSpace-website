@@ -2,14 +2,19 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useFetch } from "../hooks/useFetch";
 
 export const BlogComponent = ({ data }) => {
+  const PAYLOAD_API_URL = import.meta.env.VITE_PAYLOAD_API_URL;
   return (
     <>
       {data.docs.map((blog) => (
         <div key={blog.id} className="bg-white rounded-lg shadow-md p-1 h-max">
           {/* If you don't have an imageUrl in the object yet, use a placeholder or check your CMS fields */}
           <img
-            src={blog.thumbnail.url || "/photos/glomespace_thumnbail.png"}
-            alt={blog.Title}
+            src={
+              blog.thumbnail?.sizes?.card?.url
+                ? `${PAYLOAD_API_URL}${blog.thumbnail.sizes.card.url}`
+                : "/photos/glomespace_thumbnail.png"
+            }
+            alt={blog.title}
             className="w-full h-48 object-cover rounded-md"
           />
 
@@ -56,7 +61,7 @@ export const BlogComponentSkeleton = () => {
 export const BlogPostEmbeddable = () => {
   const PAYLOAD_API_URL = import.meta.env.VITE_PAYLOAD_API_URL;
   const { loading, data } = useFetch(
-    `${PAYLOAD_API_URL}/api/blogs?populate=*&pagination[limit]=3&sort[0]=createdAt:desc`,
+    `${PAYLOAD_API_URL}/api/blogs?limit=3&sort=-createdAt&where[status][equals]=published&depth=2`,
   );
 
   return (

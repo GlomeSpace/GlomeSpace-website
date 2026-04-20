@@ -40,7 +40,7 @@ export const ReadBlogComponent = () => {
           <div className="flex flex-col-reverse md:flex-row w-full md:gap-2 items-center">
             <div className="flex flex-col px-4 md:py-20 w-full  md:w-7/10  lg:text-left">
               <h1 className="text-[20px] text-center md:text-4xl sm:text-5xl lg:text-4xl font-bold text-blue-900 ">
-                {blog.Title}
+                {blog.title}
               </h1>
 
               <p className=" md:mt-10  italic text-gray-900 text-[15px]">
@@ -93,10 +93,11 @@ export const ReadBlogComponent = () => {
               <div className="w-full md:h-9/10  absolute md:top-5 md:left-10 ">
                 <img
                   src={
-                    blog.thumbnail?.sizes.thumbnail.url ||
-                    "/photos/glomespace_thumnbail.png"
+                    blog.thumbnail?.sizes?.card?.url
+                      ? `${PAYLOAD_API_URL}${blog.thumbnail.sizes.card.url}`
+                      : "/photos/glomespace_thumbnail.png"
                   }
-                  alt={blog.Title}
+                  alt={blog.title} // ✅ lowercase 't' — JS is case sensitive
                   className="w-full h-full object-cover rounded-md md:mb-4"
                 />
               </div>
