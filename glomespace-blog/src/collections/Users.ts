@@ -23,7 +23,7 @@ export const Users: CollectionConfig = {
     {
       name: 'username',
       type: 'text',
-      required: true,
+      required: true, 
       unique: true,
     },
     {
@@ -48,6 +48,7 @@ export const Users: CollectionConfig = {
       name: 'role',
       type: 'select',
       options: ['admin', 'author', 'reader'],
+      saveToJWT: true,
       defaultValue: 'reader',
       required: true,
       access: {

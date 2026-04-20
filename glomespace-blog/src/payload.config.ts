@@ -46,6 +46,7 @@ export default buildConfig({
       clientUploads: true, 
     }),
   ],
+  serverURL:process.env.NEXT_PUBLIC_SERVER_URL,
   cors: allowedOrigins,
   csrf: allowedOrigins,
 })

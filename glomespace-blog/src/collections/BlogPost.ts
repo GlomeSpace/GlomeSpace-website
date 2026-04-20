@@ -15,6 +15,7 @@ import type { Block } from 'payload'
 import type { CollectionConfig } from 'payload'
 
 
+
 export const BlogPost: CollectionConfig = {
   slug: 'blogs',
   admin: {
@@ -30,7 +31,14 @@ export const BlogPost: CollectionConfig = {
     }
   },        
     create: ({ req }) => !!req.user,  // only logged in users
-    update: ({ req }) => !!req.user,  // only logged in users
+    update: ({ req }) => {
+    if (!req.user) return false
+    if (req.user.role === 'admin') return true
+    // authors can only edit their own posts
+    return {
+      author: { equals: req.user.id }
+    }
+  },
     delete: ({ req }) => req.user?.role === 'admin', // only admins
   },
   fields: [
