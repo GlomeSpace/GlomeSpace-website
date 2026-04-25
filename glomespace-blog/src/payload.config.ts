@@ -46,7 +46,7 @@ export default buildConfig({
       clientUploads: true, 
     }),
   ],
-  serverURL:process.env.NEXT_PUBLIC_SERVER_URL,
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
   cors: allowedOrigins,
   csrf: allowedOrigins,
 })

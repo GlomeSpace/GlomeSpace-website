@@ -131,20 +131,89 @@ export const ReadBlogComponent = () => {
 const BlogContent = ({ blocks }) => {
   if (!blocks) return null;
 
-  // Helper function to render text with formatting (bold, italic)
   const renderChildren = (children) => {
-    return children.map((child, i) => (
-      <span
-        key={i}
-        className={`${child.bold ? "font-bold" : ""} ${child.italic ? "italic" : ""}`}
+    return children.map((child, i) => {
+      if (child.type === "linebreak") return <br key={i} />;
+      return (
+        <span
+          key={i}
+          className={`${child.bold ? "font-bold" : ""} ${child.italic ? "italic" : ""}`}
+        >
+          {child.text}
+        </span>
+      );
+    });
+  };
+
+  // Renders paragraph nodes inside a cell
+  const renderCellContent = (children) => {
+    return children.map((child, i) => {
+      if (child.type === "paragraph") {
+        return <span key={i}>{renderChildren(child.children)}</span>;
+      }
+      return null;
+    });
+  };
+
+  // headerState flags (bitmask): 1 = header row, 2 = header column, 3 = both
+  const isRowHeader = (headerState) => headerState & 1;
+  const isColHeader = (headerState) => headerState & 2;
+
+  const renderTable = (block, index) => {
+    const rows = block.children.filter((c) => c.type === "tablerow");
+
+    return (
+      <div
+        key={index}
+        className="my-8 overflow-x-auto rounded-lg shadow-sm border border-gray-200"
       >
-        {child.text}
-      </span>
-    ));
+        <table className="w-full border-collapse text-sm text-gray-800">
+          <tbody>
+            {rows.map((row, rowIdx) => (
+              <tr
+                key={rowIdx}
+                className={rowIdx % 2 === 0 ? "bg-white" : "bg-gray-50"}
+              >
+                {row.children
+                  .filter((c) => c.type === "tablecell")
+                  .map((cell, cellIdx) => {
+                    const asHeader =
+                      isRowHeader(cell.headerState) ||
+                      isColHeader(cell.headerState);
+                    const Tag = asHeader ? "th" : "td";
+
+                    return (
+                      <Tag
+                        key={cellIdx}
+                        colSpan={cell.colSpan || 1}
+                        rowSpan={cell.rowSpan || 1}
+                        className={`
+                          px-4 py-3 border border-gray-200 text-left align-top
+                          ${
+                            asHeader
+                              ? "font-semibold bg-blue-50 text-blue-900"
+                              : "font-normal text-gray-700"
+                          }
+                        `}
+                        style={
+                          cell.backgroundColor
+                            ? { backgroundColor: cell.backgroundColor }
+                            : undefined
+                        }
+                      >
+                        {renderCellContent(cell.children)}
+                      </Tag>
+                    );
+                  })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
   };
 
   return blocks.map((block, index) => {
-    // 1. Handle Paragraphs
     if (block.type === "paragraph") {
       return (
         <p
@@ -156,7 +225,6 @@ const BlogContent = ({ blocks }) => {
       );
     }
 
-    // 2. Handle Headings
     if (block.type === "heading") {
       const Tag = `h${block.level}`;
       const headingStyles = {
@@ -174,17 +242,13 @@ const BlogContent = ({ blocks }) => {
       );
     }
 
-    // 3. Handle Lists (Updated for Ordered/Numbered support)
     if (block.type === "list") {
       const isOrdered = block.format === "ordered";
       const ListTag = isOrdered ? "ol" : "ul";
-
       return (
         <ListTag
           key={index}
-          className={`mb-8 ml-6 space-y-4 text-gray-800 ${
-            isOrdered ? "list-decimal" : "list-disc"
-          }`}
+          className={`mb-8 ml-6 space-y-4 text-gray-800 ${isOrdered ? "list-decimal" : "list-disc"}`}
         >
           {block.children.map((item, i) => (
             <li key={i} className="pl-2 leading-relaxed">
@@ -195,7 +259,6 @@ const BlogContent = ({ blocks }) => {
       );
     }
 
-    // 4. Handle Quotes
     if (block.type === "quote") {
       return (
         <blockquote
@@ -205,6 +268,11 @@ const BlogContent = ({ blocks }) => {
           {renderChildren(block.children)}
         </blockquote>
       );
+    }
+
+    // 5. Handle Tables
+    if (block.type === "table") {
+      return renderTable(block, index);
     }
 
     return null;
