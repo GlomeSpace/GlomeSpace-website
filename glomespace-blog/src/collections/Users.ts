@@ -6,7 +6,13 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
   },
-  auth: true,
+  auth: {
+    cookies: {
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'Lax',
+      domain: process.env.COOKIE_DOMAIN || undefined,
+    },
+  },
   access: {
   read: () => true,
   create: ({ req }) => req.user?.role === 'admin',
