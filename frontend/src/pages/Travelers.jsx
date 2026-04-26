@@ -1,12 +1,16 @@
+"use client";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ShipmentComponent } from "../components/ShipmentComponent";
 import { FlightDetailsComponent } from "../components/FlightDetailsComponent";
 import { motion, AnimatePresence } from "framer-motion";
 import { CirclePlus } from "lucide-react";
+import { MdOutlineSpeed } from "react-icons/md";
+import * as CountUpModule from "react-countup";
 
 export const Travelers = () => {
   const GLOMESPACE_APP_URL = import.meta.env.VITE_GLOMESPACE_APP_URL;
+  const CountUp = CountUpModule.default || CountUpModule.CountUp;
 
   const [showAnswer, setShowAnswer] = useState(null);
 
@@ -137,6 +141,105 @@ export const Travelers = () => {
           </div>
         </div>
       </section>
+
+      <div className="w-full h-max md:h-180 p-3 md:p-10 ">
+        <div className="flex flex-col gap-5  w-full h-full ">
+          <div className="flex flex-col gap-5 md:flex-row h-7/10 ">
+            <div className="w-full md:w-1/3 bg-slate-500 rounded-xl flex flex-col p-5 md:p-10 justify-center text-black ">
+              <div className="md:mb-8">
+                <h2 className="font-primaryFont text-left text-white font-bold text-[30px] md:text-[40px]">
+                  Radical Transparency
+                </h2>
+              </div>
+
+              <p className="text-white text-[14px] md:text-[15px]">
+                Trust is built on knowing exactly what you’re carrying. We don’t
+                do "mystery packages." Through our Digital Manifest, you have
+                100% visibility into every item you transport before you ever
+                say yes. We treat you like a professional partner who deserves
+                the full picture, not just a delivery driver.
+              </p>
+            </div>
+            <div className="w-full md:w-1/3 bg-slate-200 rounded-xl flex flex-col p-5 md:p-10 justify-center text-black ">
+              <div className="md:mb-8">
+                <h2 className="font-primaryFont text-left text-blue-900 font-bold text-[30px] md:text-[40px]">
+                  Your Journey, Your Asset
+                </h2>
+              </div>
+
+              <p className="text-[14px] md:text-[15px] font-blogTitleFont">
+                Travel shouldn't just be an expense; it should be an
+                opportunity. We view ourselves as your financial wingman—helping
+                you offset the cost of your adventures by utilizing the space
+                you already have. We’re here to help you turn every mile you fly
+                into a step toward your next destination.
+              </p>
+            </div>
+            <div className="w-full md:w-1/3 bg-slate-500 rounded-xl flex flex-col p-5 md:p-10 justify-center text-black ">
+              <div className="md:mb-8">
+                <h2 className="font-primaryFont text-left text-white font-bold text-[30px] md:text-[40px]">
+                  Frictionless Collaboration
+                </h2>
+              </div>
+
+              <p className=" text-white text-[17px] md:text-[15px]">
+                A good workmate never makes your life harder. We are obsessed
+                with removing the "logistics headache" from your itinerary. From
+                seamless merchant matching to clear drop-off points, our
+                technology is designed to work quietly in the background so you
+                can focus on your trip, not the paperwork.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col md:flex-row h-3/10 gap-5">
+            <div className="w-full md:w-1/2 rounded-lg bg-blue-900 flex flex-col p-5 md:p-10 justify-center text-black">
+              <div className="">
+                <h2 className="font-primaryFont text-left text-white font-bold text-[20px] md:text-[20px]">
+                  The Handshake Protocol
+                </h2>
+              </div>
+
+              <p className="text-[17px] md:text-[15px] text-white ">
+                We prioritize the integrity of the connection. We provide the
+                tools, but you provide the "human touch" that traditional
+                logistics companies lost decades ago.
+              </p>
+            </div>
+            <div className="w-full md:w-1/2 rounded-lg bg-blue-900 flex flex-col p-5 md:p-10 justify-center text-black">
+              <div className="">
+                <h2 className="font-primaryFont text-left text-white font-bold text-[20px]">
+                  You are the Network
+                </h2>
+              </div>
+
+              <p className="text-[17px] md:text-[15px] text-white ">
+                At GlomeSpace, you aren't just a "user" on a platform—you are
+                the infrastructure itself. We don't own planes or warehouses; we
+                own a shared vision with people like you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-center w-full  h-70 px-5 md:px-20 ">
+        <div className="flex flex-col items-center justify-center  w-full  md:w-5/10">
+          <h2 className="font-blogTitleFont font-bold md:text-center text-blue-900 text-[30px] md:text-[40px]">
+            Join our 20+ GlomeSpace Travelers already turning their extra
+            luggage space into travel capital.
+          </h2>
+
+          <Button className="text-[13px] px-2  bg-blue-400">
+            <a
+              href={`${GLOMESPACE_APP_URL}/find-deliverer`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Become a Deliverer
+            </a>
+          </Button>
+        </div>
+      </div>
 
       <div>
         <h1 className="text-blue-900 font-bold text-center mt-20">

@@ -39,18 +39,38 @@ export const ReadBlogComponent = () => {
         <div className="">
           <div className="flex flex-col-reverse md:flex-row w-full md:gap-2 items-center">
             <div className="flex flex-col px-4 md:py-20 w-full  md:w-7/10  lg:text-left">
-              <h1 className="text-[20px] text-center md:text-4xl sm:text-5xl lg:text-4xl font-bold text-blue-900 ">
+              <h1 className="text-[20px] font-blogTitleFont text-center md:text-4xl sm:text-5xl lg:text-4xl font-bold text-blue-900 ">
                 {blog.title}
               </h1>
 
-              <p className=" md:mt-10  italic text-gray-900 text-[15px]">
+              <p className=" md:mt-10 font-blogDescFont text-gray-900 md:text-[20px]">
                 {blog.description}
               </p>
 
-              <p className=" md:mt-10  italic text-gray-700 text-[15px]">
-                Written by {blog.author.firstName} {blog.author.lastName} on{" "}
-                {formatTimestamp(blog.publishDate)}
-              </p>
+              <div className="flex items-center gap-3 font-blogDescFont text-gray-700 mt-5 md:mt-10 mb-5 md:mb-0">
+                <div className="aspect-square  bg-white h-12 rounded-full">
+                  <img
+                    src={
+                      blog.author.avatar
+                        ? `${blog.author.avatar}`
+                        : "/photos/image-placeholder.jpg"
+                    }
+                    alt={`${blog.author.firstName} ${blog.author.lastName}`}
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
+                <div>
+                  <p className="    text-gray-700 text-[15px]">
+                    Written by {blog.author.firstName} {blog.author.lastName}
+                  </p>
+                  <p className="    text-gray-700 text-[15px]">
+                    {blog.author.title}
+                  </p>
+                  <p className="  text-gray-700 text-[15px]">
+                    Published on {formatTimestamp(blog.publishDate)}
+                  </p>
+                </div>
+              </div>
 
               <div className=" flex items-center gap-3 md:mt-10  mb-5 md:mb-0  text-gray-700 ">
                 <p className="font-fancyFontAgain text-black font md:text-[20px]">
@@ -137,7 +157,7 @@ const BlogContent = ({ blocks }) => {
       return (
         <span
           key={i}
-          className={`${child.bold ? "font-bold" : ""} ${child.italic ? "italic" : ""}`}
+          className={`${child.bold ? "font-bold " : ""} ${child.italic ? "italic" : ""}`}
         >
           {child.text}
         </span>
@@ -149,7 +169,11 @@ const BlogContent = ({ blocks }) => {
   const renderCellContent = (children) => {
     return children.map((child, i) => {
       if (child.type === "paragraph") {
-        return <span key={i}>{renderChildren(child.children)}</span>;
+        return (
+          <span key={i} className="font-blogContentFont text-gray-800">
+            {renderChildren(child.children)}
+          </span>
+        );
       }
       return null;
     });
@@ -218,7 +242,7 @@ const BlogContent = ({ blocks }) => {
       return (
         <p
           key={index}
-          className="mb-6 md:mb-10 text-gray-800 leading-relaxed md:text-justify"
+          className="mb-3 md:mb-3 text-gray-800 leading-relaxed md:text-justify font-blogContentFont"
         >
           {renderChildren(block.children)}
         </p>
@@ -228,12 +252,12 @@ const BlogContent = ({ blocks }) => {
     if (block.type === "heading") {
       const Tag = `h${block.level}`;
       const headingStyles = {
-        h1: "text-4xl font-bold mt-12 mb-6 text-blue-900",
-        h2: "text-3xl font-bold mt-10 mb-5 text-blue-900",
-        h3: "text-2xl font-semibold mt-8 mb-4 text-blue-800",
-        h4: "text-xl font-semibold mt-6 mb-3 text-blue-800",
-        h5: "text-lg font-bold mt-4 mb-2 text-blue-800",
-        h6: "text-base font-bold mt-4 mb-2 text-blue-800",
+        h1: "text-4xl font-blogTitleFont  mt-12 mb-6 text-blue-900",
+        h2: "text-3xl font-blogTitleFont  mt-10 mb-5 text-blue-900",
+        h3: "text-2xl font-blogTitleFont  mt-8 mb-4 text-blue-800",
+        h4: "text-xl font-blogTitleFont  mt-6 mb-3 text-blue-800",
+        h5: "text-lg font-blogTitleFont  mt-4 mb-2 text-blue-800",
+        h6: "text-base font-blogTitleFont  mt-4 mb-2 text-blue-800",
       };
       return (
         <Tag key={index} className={headingStyles[Tag] || headingStyles.h2}>
@@ -248,7 +272,7 @@ const BlogContent = ({ blocks }) => {
       return (
         <ListTag
           key={index}
-          className={`mb-8 ml-6 space-y-4 text-gray-800 ${isOrdered ? "list-decimal" : "list-disc"}`}
+          className={`mb-8 ml-6 font-blogContentFont space-y-4 text-gray-800 ${isOrdered ? "list-decimal" : "list-disc"}`}
         >
           {block.children.map((item, i) => (
             <li key={i} className="pl-2 leading-relaxed">
@@ -263,7 +287,7 @@ const BlogContent = ({ blocks }) => {
       return (
         <blockquote
           key={index}
-          className="my-8 pl-6 border-l-4 border-blue-500 italic text-xl text-gray-700 bg-blue-50 py-4 pr-4 rounded-r-lg"
+          className="my-8 pl-6 font-blogContentFont  border-l-4 border-blue-500 text-lg text-gray-700 bg-blue-50 py-4 pr-4 rounded-r-lg"
         >
           {renderChildren(block.children)}
         </blockquote>
