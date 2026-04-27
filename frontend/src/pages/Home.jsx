@@ -222,10 +222,10 @@ const Home = () => {
             <div className="md:w-7/10  text-center lg:text-left">
               <SlotMachine />
 
-              <p className=" mt-10 font-bold text-gray-900 md:text-[20px]">
+              <p className=" md:mt-10 font-bold font-blogDescFont text-gray-900 md:text-[20px]">
                 Stop Losing customers due to Cart Abandonment at Checkout.
               </p>
-              <p className="mt-10 ">
+              <p className="mt-10 font-blogContentFont text-left text-gray-700 text-[17px] md:text-[20px]">
                 Connect with verified GlomeSpace travelers heading to locations
                 where your clients are. Get your products delivered faster and
                 more affordably than ever before.
@@ -255,78 +255,77 @@ const Home = () => {
         </div>
       </section>
 
-      {/**
-       *  <div className=" flex w-full bg-red h-100 w-full h-80 overflow-hidden flex items-center justify-center rounded-xl">
-        <div className=" flex  justify-center items-center w-3/10">
-          <h className="font-fancyFont  font-bold text-[50px]">
-            Why GlomeSpace?
-          </h>
-        </div>
-        <div className="relative flex h-full  w-7/10 "></div>
-      </div>
-      *  <div className="w-full bg-blue-900 h-100">
-        <div className="flex items-center justify-center h-full w-8/10 mx-auto">
-          <div className="flex text-[40px] text-white">
-            <p>Are you struggling with cart abadonment at Checkout?</p>
-          </div>
-
-          <div className="flex flex-col">
-            <p className="text-white text-lg">
-              We're the Airbnb for Logistics. We connect e-commerce sellers and
-              individual shoppers with verified GlomeSpace travelers heading to
-              their locations, enabling faster and more affordable deliveries.
-            </p>
-
-            <p className="text-green-">
+      <div className="flex md:gap-3  flex-col  gap-3 w-full md:h-450  pt-3 md:pt-20 px-2 md:px-10">
+        <h2 className="text-3xl font-blogTitleFont sm:text-4xl font-bold text-center text-blue-900 mb-4 ">
+          With GlomeSpace, you can
+        </h2>
+        <div className="flex flex-col md:flex-row bg-slate-900 md:bg-transparent  items-center justify-end w-full py-2 rounded-lg gap-5 md:gap-0">
+          <div className="flex flex-col justify-center bg-slate-900 text-white md:w-7/10 md:rounded-l-lg  h-9/10 px-5 py-2 ">
+            <h2 className="font-primaryFont text-left font-bold text-[30px] md:text-[40px]">
+              Install Our Shopify App
+            </h2>
+            <p className="text-[17px] md:text-[15px]">
               Install GlomeSpace natively in your Shopify store and get access
-              to a global network of travelers ready.
+              to a global network of travelers ready to deliver your products
+              faster and more affordably than ever before. With our seamless
+              integration, you just have to install and start managing
+              everything from your Shopify dashboard.
             </p>
+
+            <div className="flex justify-center">
+              <button className="bg-white rounded-full font-bold font-blogContentFont text-black py-3 px-2 mt-5 w-max">
+                <a
+                  href={`${GLOMESPACE_APP_URL}/account`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Install GlomeSpace
+                </a>
+              </button>
+            </div>
+          </div>
+          <img
+            src={"/photos/install_glomespace.png"}
+            alt="Install GlomeSpace"
+            className="w-9/10 md:w-100  object-cover rounded-md "
+          />
+        </div>
+
+        <div className="flex flex-col items-center h-200  w-full">
+          <div className="flex flex-col w-full h-full md:relative ">
+            <img
+              src={"/photos/checkout_glomespace.png"}
+              alt="GlomeSpace Checkout"
+              className=" md:w-200 md:absolute md:border-15 border-slate-100 z-10 md:left-1/2 md:transform md:-translate-x-1/2 object-cover rounded-md "
+            />
+            <div className="flex  flex-col md:flex-row  md:absolute gap-10  md:gap-20  bottom-0 bg-slate-400 w-full text-white rounded-lg h-8/10 px-5 py-5 md:py-2 ">
+              <div className="flex flex-col justify-end gap-3  w-full md:w-1/2 md:py-20   ">
+                <h2 className="font-primaryFont font-bold text-slate-900 text-[20px] md:text-[40px]">
+                  Checkout Process Optimized
+                </h2>
+                <p className="text-[17px] md:text-[15px] font-blogContentFont">
+                  With GlomeSpace integrated into your checkout, customers can
+                  choose our delivery option and get matched with travelers
+                  heading to their location. This not only reduces cart
+                  abandonment but also provides a unique, fast, and affordable
+                  shipping experience that keeps customers coming back.
+                </p>
+              </div>
+              <div className="flex flex-col justify-end gap-3 w-full  md:w-1/2 md:py-20  ">
+                <h2 className="font-primaryFont text-slate-900 font-bold text-[20px] md:text-[40px]">
+                  Manage Everything Easily
+                </h2>
+                <p className="text-[17px] md:text-[15px] font-blogContentFont">
+                  Manage your GlomeSpace data easily from your Shopify
+                  dashboard. Keep track of your shipments, travelers, clients
+                  and optimize your logistics operations—all in one place. and
+                  optimize your logistics operations—all in one place.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      */}
-
-      {/* How It Works */}
-      <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-blue-900 mb-16">
-            How It Works
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                num: "1",
-                title: "Post Your Shipment",
-                desc: "List what you need delivered and where it's going",
-              },
-              {
-                num: "2",
-                title: "Match with Travelers",
-                desc: "Get connected with verified travelers heading your way",
-              },
-              {
-                num: "3",
-                title: "Track & Receive",
-                desc: "Monitor your shipment in real-time until delivery",
-              },
-            ].map((step, idx) => (
-              <div key={idx} className="text-center relative">
-                <div className="bg-blue-900 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
-                  {step.num}
-                </div>
-                {idx < 2 && (
-                  <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-blue-900/30"></div>
-                )}
-                <h3 className="text-xl font-bold text-blue-900 mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-gray-600">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <div className="flex flex-col gap-2 w-full md:h-200 px-5 md:px-30">
         <div className="flex flex-col md:flex-row gap-2  md:h-1/2">
@@ -444,8 +443,8 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Blogs Section */}
-
+      {/* Blogs Section
+       */}
       <BlogPostEmbeddable />
 
       <TrustpilotReviewCard />
@@ -456,16 +455,16 @@ const Home = () => {
 export default Home;
 
 const words = [
-  " Shopify ?",
-  " Amazon ?",
-  " eBay ?",
-  " Etsy ?",
-  " WooCommerce ?",
-  " BigCommerce ?",
-  " Magento ?",
-  " Wix ?",
-  "Squarespace ?",
-  "PrestaShop ?",
+  " Shopify",
+  " Amazon",
+  " eBay",
+  " Etsy",
+  " WooCommerce",
+  " BigCommerce",
+  " Magento",
+  " Wix",
+  "Squarespace",
+  "PrestaShop",
 ];
 
 const SlotMachine = () => {
@@ -480,7 +479,7 @@ const SlotMachine = () => {
 
   return (
     <div className="flex items-center gap-2 font-bold">
-      <h1 className="text-[20px]  md:text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-900 ">
+      <h1 className="text-[33px] font-blogTitleFont  md:text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-900 ">
         Are you an e-commerce seller on{" "}
         <span className="inline-flex h-max overflow-hidden px-2 rounded align-bottom ">
           <AnimatePresence mode="wait">
@@ -496,6 +495,7 @@ const SlotMachine = () => {
             </motion.div>
           </AnimatePresence>
         </span>
+        ?
       </h1>
     </div>
   );

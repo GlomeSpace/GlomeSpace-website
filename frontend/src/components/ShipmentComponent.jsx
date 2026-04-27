@@ -18,7 +18,7 @@ export const ShipmentComponent = () => {
       <div className=" flex flex-col items-center justify-between w-full  ">
         <div className="flex items-center justify-center bg-slate-100 gap-2 h-10 rounded-t-xl w-full ">
           United States <IoAirplaneSharp size={25} className="text-blue-900" />
-          Australia
+          United Kingdom
         </div>
 
         <div className=" flex items-center justify-center px-4 h-max w-full ">
@@ -32,7 +32,7 @@ export const ShipmentComponent = () => {
         </div>
 
         <div className=" flex items-center justify-center rounded-full bg-blue-900 text-white dark:bg-blue-600 px-2 text-sm">
-          9 days to expire
+          09 days to expire
         </div>
 
         <div className=" w-full flex items-center justify-center gap-2 px-2">
