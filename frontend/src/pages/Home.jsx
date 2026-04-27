@@ -444,8 +444,8 @@ const Home = () => {
       </div>
 
       {/* Blogs Section
-
-    <BlogPostEmbeddable /> */}
+       */}
+      <BlogPostEmbeddable />
 
       <TrustpilotReviewCard />
     </div>
