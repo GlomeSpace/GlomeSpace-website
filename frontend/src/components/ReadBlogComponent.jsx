@@ -39,7 +39,7 @@ export const ReadBlogComponent = () => {
         <div className="">
           <div className="flex flex-col-reverse md:flex-row w-full md:gap-2 items-center">
             <div className="flex flex-col px-4 md:py-20 w-full  md:w-7/10  lg:text-left">
-              <h1 className="text-[20px] font-blogTitleFont text-center md:text-4xl sm:text-5xl lg:text-4xl font-bold text-blue-900 ">
+              <h1 className="text-[20px] font-blogTitleFont  md:text-4xl sm:text-5xl lg:text-4xl font-bold text-blue-900 ">
                 {blog.title}
               </h1>
 
@@ -130,7 +130,7 @@ export const ReadBlogComponent = () => {
         id="how-it-works"
         className="flex flex-col md:flex-row gap-5 py-20 px-4 sm:px-6 lg:px-8"
       >
-        <div className="md:w-6/10 md:px-20">
+        <div className="md:w-7/10 md:px-20">
           <BlogContent blocks={blog.content?.root?.children} />
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-4">
@@ -139,7 +139,7 @@ export const ReadBlogComponent = () => {
             </Button>
           </div>
         </div>
-        <div className="md:w-3/10 mx-auto">
+        <div className="md:w-3/10 md:mx-auto">
           <NewsletterForm />
         </div>
       </section>

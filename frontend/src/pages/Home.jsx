@@ -219,7 +219,7 @@ const Home = () => {
       <section className="pt-20 bg-blue-100 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col-reverse md:flex-row gap-2 items-center">
-            <div className="md:w-7/10  text-center lg:text-left">
+            <div className="md:w-7/10  md:text-center lg:text-left">
               <SlotMachine />
 
               <p className=" md:mt-10 font-bold font-blogDescFont text-gray-900 md:text-[20px]">
@@ -275,7 +275,7 @@ const Home = () => {
             <div className="flex justify-center">
               <button className="bg-white rounded-full font-bold font-blogContentFont text-black py-3 px-2 mt-5 w-max">
                 <a
-                  href={`${GLOMESPACE_APP_URL}/account`}
+                  href="" // {`${GLOMESPACE_APP_URL}/account`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -443,8 +443,8 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Blogs Section
-       */}
+      {/* Blogs Section  */}
+
       <BlogPostEmbeddable />
 
       <TrustpilotReviewCard />
@@ -479,7 +479,7 @@ const SlotMachine = () => {
 
   return (
     <div className="flex items-center gap-2 font-bold">
-      <h1 className="text-[33px] font-blogTitleFont  md:text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-900 ">
+      <h1 className="text-[30px] font-blogTitleFont  md:text-4xl lg:text-6xl font-bold text-blue-900 ">
         Are you an e-commerce seller on{" "}
         <span className="inline-flex h-max overflow-hidden px-2 rounded align-bottom ">
           <AnimatePresence mode="wait">

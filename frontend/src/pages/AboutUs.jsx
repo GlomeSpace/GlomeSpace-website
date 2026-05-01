@@ -181,7 +181,7 @@ export const AboutUs = () => {
           <div className="flex flex-row md:flex-col items-center gap-2">
             <MdEmail size={20} />
             <div>
-              <p>admin@glomespace.com</p>
+              <p>help@glomespace.com</p>
               <p>support@glomespace.com</p>
             </div>
           </div>
@@ -203,15 +203,15 @@ export const AboutUs = () => {
 };
 
 const words = [
-  "Gift Cards ?",
-  "Clothings ?",
-  "Electronics ?",
-  "Documents ?",
-  "Books ?",
-  "Toys ?",
-  "Sports Equipment ?",
-  "Health Products ?",
-  "Beauty Products ?",
+  "Gift Cards",
+  "Clothings",
+  "Electronics",
+  "Documents",
+  "Books",
+  "Toys",
+  "Sports Equipment",
+  "Health Products",
+  "Beauty Products",
 ];
 
 const SlotMachine = () => {
@@ -226,7 +226,7 @@ const SlotMachine = () => {
 
   return (
     <div className="flex items-center gap-2 ">
-      <h1 className="text-[20px]  md:text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-900 ">
+      <h1 className="text-[30px] font-blogTitleFont  md:text-4xl lg:text-6xl font-bold text-blue-900 ">
         Are you looking to ship{" "}
         <span className="inline-flex h-max overflow-hidden px-2 rounded align-bottom ">
           <AnimatePresence mode="wait">
@@ -242,6 +242,7 @@ const SlotMachine = () => {
             </motion.div>
           </AnimatePresence>
         </span>
+        ?
       </h1>
     </div>
   );

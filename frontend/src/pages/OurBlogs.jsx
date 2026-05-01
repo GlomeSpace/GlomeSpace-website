@@ -28,12 +28,12 @@ export const BlogPosts = () => {
             <div className="px-8 w-full md:w-7/10  mt-10  text-center lg:text-left">
               <SlotMachine />
 
-              <p className=" md:mt-10 font-bold text-gray-900 text-[20px]">
+              <p className=" md:mt-10 font-blogDescFont font-bold text-gray-900 text-[20px]">
                 Read some of our latest blogs and insights on logistics, travel,
                 e-commerce and more.
               </p>
               <p className=" mt-3 md:mt-10 ">
-                Are you a logistics enthusiast, a traveler, an e-commerce seller
+                Are you a logistics enthusiast, a traveler, an e-commerce selSler
                 or just curious about the future of travel and logistics? Our
                 blog covers a wide range of topics related to the logistics
                 industry, travel trends, e-commerce insights, innovation in
@@ -136,7 +136,7 @@ const SlotMachine = () => {
 
   return (
     <div className="flex items-center gap-2 font-bold">
-      <h1 className="text-[20px] md:text-4xl sm:text-5xl lg:text-5xl font-bold text-blue-900 ">
+      <h1 className="text-[30px] font-blogTitleFont  md:text-4xl lg:text-6xl font-bold text-blue-900 ">
         At GlomeSpace, we keep you updated with latest insights from the{" "}
         <span className="inline-flex h-max overflow-hidden px-2 rounded align-bottom ">
           <AnimatePresence mode="wait">
