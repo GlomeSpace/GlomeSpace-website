@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CirclePlus } from "lucide-react";
 import { MdOutlineSpeed } from "react-icons/md";
 import * as CountUpModule from "react-countup";
+import { BlogPostMiniEmbeddable } from "../components/BlogComponent";
 
 export const Travelers = () => {
   const GLOMESPACE_APP_URL = import.meta.env.VITE_GLOMESPACE_APP_URL;
@@ -281,6 +282,7 @@ export const Travelers = () => {
           </div>
         </div>
       </div>
+      <BlogPostMiniEmbeddable />
     </div>
   );
 };
