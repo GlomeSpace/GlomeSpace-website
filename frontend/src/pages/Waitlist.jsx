@@ -27,7 +27,7 @@ import CalendlyWidget from "../components/CalendlyWidget";
 const Waitlist = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_WAITLIST_URL;
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [messageTitle, setMessageTitle] = useState();
