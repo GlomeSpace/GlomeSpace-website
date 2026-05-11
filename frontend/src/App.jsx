@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { AboutUs } from "./pages/AboutUs.jsx";
 import { BlogPosts } from "./pages/OurBlogs.jsx";
 import { ReadBlogComponent } from "./components/ReadBlogComponent.jsx";
+import Waitlist from "./pages/Waitlist.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/install-glomespace" element={<Waitlist />} />
           <Route path="/travelers" element={<Travelers />} />
           <Route path="/become-an-investor" element={<InvestorForm />} />
           <Route path="/about-us" element={<AboutUs />} />

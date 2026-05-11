@@ -66,7 +66,7 @@ const Footer = () => {
       )}
 
       <div className=" md:flex flex-col h-180 w-full mt-5  font-headerFont ">
-        <div className="flex h-2/10 bg-slate-100">
+        <div className="flex flex-col gap-5 justify-center md:flex-row h-2/10 bg-slate-100">
           <div className="flex justify-center items-center w-full md:w-4/10 gap-5 ">
             <Link to="/legal/terms-of-service">
               <p className="text-sm">Terms of Service</p>
@@ -95,10 +95,11 @@ const Footer = () => {
               href="https://www.linkedin.com/company/glomespace/"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-blue-900"
             >
               <FaLinkedin />
             </a>
-            <Link to="">
+            <Link to="" className="text-pink-800">
               <FaInstagram />
             </Link>
 
@@ -110,9 +111,14 @@ const Footer = () => {
               <FaTiktok />
             </Link>
 
-            <Link to="">
-              <FaYoutube />
-            </Link>
+            <a
+              href="https://www.youtube.com/@glomespace"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-500"
+            >
+              <FaYoutube size={25} />
+            </a>
           </div>
 
           <div className="hidden md:flex justify-center items-center w-3/10 gap-5 ">
@@ -218,6 +224,34 @@ const Footer = () => {
               </Link>
             </div>
           </div>
+        </div>
+        <div className="md:hidden py-5 flex flex-row justify-center bg-slate-200 items-center gap-10 ">
+          <a
+            href="https://www.linkedin.com/company/glomespace/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-900"
+          >
+            <FaLinkedin size={25} />
+          </a>
+          <Link to="" className="text-pink-800">
+            <FaInstagram size={25} />
+          </Link>
+          <Link to="">
+            <FaXTwitter size={25} />
+          </Link>
+          <Link to="">
+            <FaTiktok size={25} />
+          </Link>
+
+          <a
+            href="https://www.youtube.com/@glomespace"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-red-500"
+          >
+            <FaYoutube size={25} />
+          </a>
         </div>
 
         <div className="flex flex-col text-[12px] py-10 gap-1  items-center justify-center bg-slate-300 w-full h-1/10 pb-30">
