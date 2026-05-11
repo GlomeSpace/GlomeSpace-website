@@ -120,7 +120,7 @@ const Waitlist = () => {
             <img
               alt="Shopify Logo"
               src="/photos/shopify.png"
-              className="w-50"
+              className="w-20 md:w-50"
             />
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               Our Shopify App is still under review
