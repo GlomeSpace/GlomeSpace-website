@@ -39,6 +39,7 @@ import {
 } from "../components/BlogComponent";
 
 import { TrustpilotReviewCard } from "../components/TrustpilotReviewCard";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -274,13 +275,11 @@ const Home = () => {
 
             <div className="flex justify-center">
               <button className="bg-white rounded-full font-bold font-blogContentFont text-black py-3 px-2 mt-5 w-max">
-                <a
-                  href="" // {`${GLOMESPACE_APP_URL}/account`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/install-glomespace" // {`${GLOMESPACE_APP_URL}/account`}
                 >
                   Install GlomeSpace
-                </a>
+                </Link>
               </button>
             </div>
           </div>
