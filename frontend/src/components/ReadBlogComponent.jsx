@@ -255,14 +255,14 @@ const BlogContent = ({ blocks }) => {
     }
 
     if (block.type === "heading") {
-      const Tag = `h${block.level}`;
+      const Tag = `${block.tag}`;
       const headingStyles = {
         h1: "text-4xl font-blogTitleFont  mt-12 mb-6 text-blue-900",
         h2: "text-3xl font-blogTitleFont  mt-10 mb-5 text-blue-900",
         h3: "text-2xl font-blogTitleFont  mt-8 mb-4 text-blue-800",
         h4: "text-xl font-blogTitleFont  mt-6 mb-3 text-blue-800",
         h5: "text-lg font-blogTitleFont  mt-4 mb-2 text-blue-800",
-        h6: "text-base font-blogTitleFont  mt-4 mb-2 text-blue-800",
+        h6: "text-base font-blogTitleFont font-bold mt-4 mb-2 text-blue-800",
       };
       return (
         <Tag key={index} className={headingStyles[Tag] || headingStyles.h2}>

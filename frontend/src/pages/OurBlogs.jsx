@@ -17,7 +17,7 @@ export const BlogPosts = () => {
   const PAYLOAD_API_URL = import.meta.env.VITE_PAYLOAD_API_URL;
 
   const { loading, error, data } = useFetch(
-    `${PAYLOAD_API_URL}/api/blogs?populate=*`,
+    `${PAYLOAD_API_URL}/api/blogs?limit=21&sort=-createdAt&where[status][equals]=published&depth=2`,
   );
 
   return (
@@ -33,12 +33,12 @@ export const BlogPosts = () => {
                 e-commerce and more.
               </p>
               <p className=" mt-3 md:mt-10 ">
-                Are you a logistics enthusiast, a traveler, an e-commerce selSler
-                or just curious about the future of travel and logistics? Our
-                blog covers a wide range of topics related to the logistics
-                industry, travel trends, e-commerce insights, innovation in
-                logistics and much more. Stay informed and inspired with our
-                latest blog
+                Are you a logistics enthusiast, a traveler, an e-commerce
+                selSler or just curious about the future of travel and
+                logistics? Our blog covers a wide range of topics related to the
+                logistics industry, travel trends, e-commerce insights,
+                innovation in logistics and much more. Stay informed and
+                inspired with our latest blog
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-4">
                 <Button className="text-[13px] px-2  bg-blue-400">

@@ -108,7 +108,7 @@ const Header = () => {
                 Become a Deliverer
               </a>
             </Button>
-
+            {/** 
             <div className="h-10 aspect-square rounded-full">
               <a href={`${GLOMESPACE_APP_URL}/register-user`}>
                 <img
@@ -119,7 +119,7 @@ const Header = () => {
               </a>
             </div>
 
-            {/**
+            
             <Popover>
               <PopoverTrigger>
                 <div className="h-10 aspect-square rounded-full">
