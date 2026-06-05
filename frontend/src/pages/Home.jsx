@@ -18,6 +18,8 @@ import {
   CheckCircle,
   Menu,
   X,
+  Plane,
+  ArrowUpRight,
 } from "lucide-react";
 import {
   MdOutlineEco,
@@ -25,8 +27,10 @@ import {
   MdOutlineSecurity,
   MdOutlineSpeed,
 } from "react-icons/md";
-
 import { Button } from "@/components/ui/button";
+import { FaPeopleArrows, FaShopify, FaPaperPlane } from "react-icons/fa6";
+import { RiSecurePaymentFill } from "react-icons/ri";
+import { TbMoneybag } from "react-icons/tb";
 
 import CalendlyWidget from "../components/CalendlyWidget";
 import Footer from "../components/Footer";
@@ -144,6 +148,28 @@ const Home = () => {
     },
   ];
 
+  const whatWeDo = [
+    {
+      id: 1,
+      title: "Decentralized Delivery Network",
+      desc: "By utilizing the empty luggage capacity of frequent flyers, we bypass traditional, bloated carrier routes to provide a faster, leaner delivery alternative.",
+      icon: FaPeopleArrows,
+    },
+    {
+      id: 2,
+      title: "Frictionless Shopify Integration",
+      desc: "Our platform plugs directly into your existing Shopify store. Merchants can offer our delivery option at checkout with zero custom coding, instantly providing customers with a premium, low-cost shipping alternative.",
+      icon: FaShopify,
+    },
+
+    {
+      id: 3,
+      title: "Effortless Travel Subsidies",
+      desc: "For our travelers, we turn the cost of travel into a business opportunity. Whether you're a digital nomad or a frequent business flyer, we provide a reliable, legal, and secure way to monetize your spare luggage space and offset your trip expenses.",
+      icon: TbMoneybag,
+    },
+  ];
+
   const [userData, setUserData] = useState(INITIAL_STATE);
 
   const handleOnChange = (e) => {
@@ -192,7 +218,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen font-headerFont bg-gradient-to-br from-slate-100 via-blue-50 to-slate-100">
+    <div className=" min-h-screen font-headerFont bg-gradient-to-br  from-slate-100 via-blue-50 to-slate-100">
       <AlertDialog
         open={isDialogOpen}
         onOpenChange={setIsDialogOpen}
@@ -215,22 +241,27 @@ const Home = () => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-
       {/* Hero Section */}
-      <section className="pt-20 bg-blue-100 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col-reverse md:flex-row gap-2 items-center">
-            <div className="md:w-7/10  md:text-center lg:text-left">
-              <SlotMachine />
+      <div className="pt-20 md:pt-10 px-4 sm:px-6 lg:px-8">
+        <div className=" bg-gradient-to-b from-blue-900 to-transparent p-10 rounded-t-[50px] ">
+          <div className="flex  gap-2 items-center">
+            <div className="w-full ">
+              <h1 className="text-[20px] font-blogTitleFont  md:text-4xl lg:text-6xl font-bold text-white ">
+                Are you an e-commerce seller on Shopify?
+              </h1>
 
-              <p className=" md:mt-10 font-bold font-blogDescFont text-gray-900 md:text-[20px]">
+              <p className=" md:mt-10 font-bold font- text-gray-900 md:text-[20px]">
                 Stop Losing customers due to Cart Abandonment at Checkout.
               </p>
+              {/**
+               *  <SlotMachine />
+              * 
               <p className="mt-10 font-blogContentFont text-left text-gray-700 text-[17px] md:text-[20px]">
                 Connect with verified GlomeSpace travelers heading to locations
                 where your clients are. Get your products delivered faster and
                 more affordably than ever before.
               </p>
+               */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-4">
                 <Button className="text-[13px] px-2  bg-blue-900">
                   <a
@@ -238,23 +269,68 @@ const Home = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Create a Shipment
+                    Ship with us Today
                   </a>
                 </Button>
               </div>
             </div>
 
-            <div className="relative flex flex-col items-center justify-center  md:gap-5 h-50 md:h-100 w-6/10">
-              <div className="absolute top-1 md:left-90 ">
+            <div className=" hidden relative md:flex flex-col items-center justify-center text-white  md:gap-5 h-50 md:h-100 w-6/10">
+              <FaShopify size={300} />
+              {/** <div className="absolute top-1 md:left-90 ">
                 <ShipmentComponent />
               </div>
-              <div className="absolute w-60 mt-6 md:w-full">
+
+            
+             * 
+             <div className="absolute w-60 mt-6 md:w-full">
                 <img src="/photos/Ecommerce_seller.png" className=" md:w-600" />
               </div>
+                */}
             </div>
           </div>
         </div>
-      </section>
+      </div>
+      {/* What we do Section */}
+
+      <div className="flex flex-col items-center gap-5 w-full">
+        <h1 className=" font-bold bg-blue-200 px-2 m-auto rounded-md text-black">
+          What We Do
+        </h1>
+
+        <div className="w-full md:w-1/2">
+          <h1 className="font-mainHeaderFont text-[20px] md:text-[50px] font-bold text-center text-black mb-4">
+            Providing a faster way to ship your packages internationally
+          </h1>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-2 overflow-x-auto scrollbar-hide ">
+          {whatWeDo.map((item) => (
+            <div
+              key={item.id}
+              className="w-100 aspect-square hover:cursor-pointer border-1 border-gray-300 hover:border-none text-black hover:text-white rounded-[50px] hover:bg-gradient-to-b from-blue-900 to-transparent p-10"
+            >
+              <div className="flex flex-col justify-between w-full h-full">
+                <item.icon
+                  size={60}
+                  className="text-blue-900 mb-5 rounded-full p-4 bg-blue-200"
+                />
+                <div>
+                  <h2 className="font-bold  text-[15px] pb-5">{item.title}</h2>
+                  <p className="text-[14px]">{item.desc}</p>
+                </div>
+                <div className="flex mt-auto justify-end">
+                  <div className="border-2 border-gray-200 rounded-full mt-auto p-2 w-max hover:bg-blue-900 hover:border-none hover:text-white transition-colors duration-300">
+                    <ArrowUpRight />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/**
+ * 
 
       <div className="flex md:gap-3  flex-col  gap-3 w-full md:h-450  pt-3 md:pt-20 px-2 md:px-10">
         <h2 className="text-3xl font-blogTitleFont sm:text-4xl font-bold text-center text-blue-900 mb-4 ">
@@ -325,10 +401,73 @@ const Home = () => {
           </div>
         </div>
       </div>
+ */}
 
-      <div className="flex flex-col gap-2 w-full md:h-200 px-5 md:px-30">
+      <div className="flex bg-gradient-to-t from-slate-900 to-transparent items-center h-150  w-full mt-10 ">
+        <div className="relative bg-[url('/photos/glomespace_homepage3.jpg')] bg-cover w-full md:w-4/10 h-full flex items-center justify-center md:rounded-r-[90px]">
+          <div className="md:hidden absolute bg-black opacity-70 md:opacity-40 p-5 h-full w-full md:rounded-r-[90px] " />
+          <div className=" md:hidden z-10 flex flex-col p-5 md:p-10 items-center w-6/10 text-black w-full md:w-6/10 rounded-md ">
+            <div className="flex flex-col md:flex-row md:bg-transparent  items-center justify-end w-full py-2 rounded-lg gap-5 md:gap-0">
+              <div className="flex flex-col justify-center text-white md:rounded-l-lg  h-9/10 px-5 py-2 ">
+                <h2 className="font-primaryFont text-left font-bold text-[30px] md:text-[40px]">
+                  Install Our Shopify App
+                </h2>
+                <p className="text-[17px] md:text-[15px]">
+                  Install GlomeSpace natively in your Shopify store and get
+                  access to a global network of travelers ready to deliver your
+                  products faster and more affordably than ever before. With our
+                  seamless integration, you just have to install and start
+                  managing everything from your Shopify dashboard.
+                </p>
+
+                <div className="flex justify-center">
+                  <button className="bg-white rounded-full font-bold font-blogContentFont text-black py-3 px-2 mt-5 w-max">
+                    <Link
+                      to="/install-glomespace" // {`${GLOMESPACE_APP_URL}/account`}
+                    >
+                      Install GlomeSpace
+                    </Link>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="hidden md:flex flex-col p-5 md:p-10 items-center w-6/10 text-black w-full md:w-6/10 rounded-md ">
+          <div className="flex flex-col md:flex-row bg-slate-900 md:bg-transparent  items-center justify-end w-full py-2 rounded-lg gap-5 md:gap-0">
+            <div className="flex flex-col justify-center text-white md:rounded-l-lg  h-9/10 px-5 py-2 ">
+              <h2 className="font-primaryFont text-left font-bold text-[30px] md:text-[40px]">
+                Install Our Shopify App
+              </h2>
+              <p className="text-[17px] md:text-[15px]">
+                Install GlomeSpace natively in your Shopify store and get access
+                to a global network of travelers ready to deliver your products
+                faster and more affordably than ever before. With our seamless
+                integration, you just have to install and start managing
+                everything from your Shopify dashboard.
+              </p>
+
+              <div className="flex justify-center">
+                <button className="bg-white rounded-full font-bold font-blogContentFont text-black py-3 px-2 mt-5 w-max">
+                  <Link
+                    to="/install-glomespace" // {`${GLOMESPACE_APP_URL}/account`}
+                  >
+                    Install GlomeSpace
+                  </Link>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2 w-full md:h-200 px-5 md:px-30 mt-10">
+        <h2 className="text-3xl font-blogTitleFont sm:text-4xl font-bold text-center text-blue-900 mb-4 ">
+          Why Choose GlomeSpace?
+        </h2>
+
         <div className="flex flex-col md:flex-row gap-2  md:h-1/2">
-          <div className="flex flex-col p-5 md:p-10 justify-center  bg-slate-200 text-black w-full md:w-4/10 rounded-md ">
+          <div className="flex flex-col p-5 md:p-10 justify-center  bg-blue-900 text-white w-full md:w-4/10 rounded-md ">
             <div>
               <MdOutlineSpeed size={45} className="" />
               <h2 className="font-primaryFont text-left font-bold text-[30px] md:text-[40px]">
@@ -399,7 +538,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
       {/* Frequently Asked Questions Section */}
       <div className="">
         <h1 className="text-blue-900 font-bold text-center px-2 md:px-0 mt-20">
@@ -441,11 +579,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-
       {/* Blogs Section  */}
-
       <BlogPostEmbeddable />
-
       <TrustpilotReviewCard />
     </div>
   );
@@ -478,7 +613,7 @@ const SlotMachine = () => {
 
   return (
     <div className="flex items-center gap-2 font-bold">
-      <h1 className="text-[30px] font-blogTitleFont  md:text-4xl lg:text-6xl font-bold text-blue-900 ">
+      <h1 className="text-[30px] font-blogTitleFont  md:text-4xl lg:text-6xl font-bold text-white ">
         Are you an e-commerce seller on{" "}
         <span className="inline-flex h-max overflow-hidden px-2 rounded align-bottom ">
           <AnimatePresence mode="wait">
@@ -488,7 +623,7 @@ const SlotMachine = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="text-blue-900"
+              className="text-white"
             >
               {words[index]}
             </motion.div>
